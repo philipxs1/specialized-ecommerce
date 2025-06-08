@@ -86,4 +86,4 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 
 Built with ❤️ using React Router.
 
-Yoo!
+Yoo! X2 X3
