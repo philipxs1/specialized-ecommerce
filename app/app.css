@@ -11,6 +11,8 @@
 
   --color-primary: hsl(0 0 100%);
   --color-gray-primary: hsl(0 0 95%);
+  --color-gray-border: hsl(0 0 90%);
+  --color-black-super-header: hsl(0 0 14.5%);
 }
 
 html,
