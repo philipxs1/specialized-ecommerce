@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Icon from "~/ui/Icon/Icon";
 
 function SearchForm() {
   const [search, setSearch] = useState("");
@@ -13,21 +14,7 @@ function SearchForm() {
       <label htmlFor="default-search" />
       <div className="relative block">
         <div className="absolute top-0 bottom-0 left-0 m-auto h-6 w-6 cursor-pointer pl-2">
-          <svg
-            className="h-6 w-6 text-black dark:text-gray-400"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
-          </svg>
+          <Icon id="search" strokeWidth={1} size={24} />
         </div>
         <input
           type="text"

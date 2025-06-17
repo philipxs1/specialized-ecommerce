@@ -1,10 +1,11 @@
 import SearchForm from "~/components/SearchForm/SearchForm";
 
 import { Link } from "react-router";
+import Icon from "~/ui/Icon/Icon";
 
 const Nav = () => {
   return (
-    <div className="bg-primary border-gray-border flex border-b-1 px-6 py-6">
+    <div className="bg-primary border-gray-border flex items-baseline border-b-1 px-6 py-6">
       <div className="mr-auto flex grow items-center justify-start gap-8">
         <Link to="/">
           <svg
@@ -63,7 +64,24 @@ const Nav = () => {
         <SearchForm />
       </div>
 
-      <nav>icon links</nav>
+      <nav className="hover:text-nav-hover flex gap-6.5">
+        <a href="" className="flex gap-2">
+          <div>
+            <Icon id="user" strokeWidth={1} />
+          </div>
+          Sign In
+        </a>
+        <a href="">
+          <div>
+            <Icon id="book-mark" strokeWidth={1} />
+          </div>
+        </a>
+        <a href="">
+          <div>
+            <Icon id="shopping-cart" strokeWidth={1} fill="black" />
+          </div>
+        </a>
+      </nav>
     </div>
   );
 };
