@@ -64,12 +64,14 @@ const Nav = () => {
         <SearchForm />
       </div>
 
-      <nav className="hover:text-nav-hover flex gap-6.5">
-        <a href="" className="flex gap-2">
+      <nav className="flex gap-6.5">
+        <a href="" className="flex items-center gap-2">
           <div>
             <Icon id="user" strokeWidth={1} />
           </div>
-          Sign In
+          <span className="hover:text-nav-hover align-baseline text-xs">
+            Sign in
+          </span>
         </a>
         <a href="">
           <div>
