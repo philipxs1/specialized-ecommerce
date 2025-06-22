@@ -1,10 +1,11 @@
-import { User, Search, ShoppingCart, Bookmark } from "react-feather";
+import { User, Search, ShoppingCart, Bookmark, Home } from "react-feather";
 
 const icons = {
   search: Search,
   user: User,
   "book-mark": Bookmark,
   "shopping-cart": ShoppingCart,
+  home: Home,
 };
 
 const Icon = ({

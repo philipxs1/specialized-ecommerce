@@ -5,7 +5,7 @@ import Icon from "~/ui/Icon/Icon";
 
 const Nav = () => {
   return (
-    <div className="bg-primary border-gray-border flex items-baseline border-b-1 px-6 py-6">
+    <div className="bg-primary border-gray-border flex items-baseline border-b-1 pb-6">
       <div className="mr-auto flex grow items-center justify-start gap-8">
         <Link to="/">
           <svg
