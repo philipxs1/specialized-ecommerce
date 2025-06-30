@@ -64,22 +64,22 @@ const Nav = () => {
         <SearchForm />
       </div>
 
-      <nav className="flex gap-6.5">
-        <a href="" className="flex items-center gap-2">
-          <div>
+      <nav className="flex items-center justify-center gap-6.5">
+        <a href="" className="group flex items-center gap-2">
+          <div className="relative flex items-center justify-center overflow-hidden rounded-full border-1 border-black">
             <Icon id="user" strokeWidth={1} />
           </div>
-          <span className="hover:text-nav-hover align-baseline text-xs">
+          <span className="group-hover:text-nav-hover align-baseline text-xs">
             Sign in
           </span>
         </a>
         <a href="">
-          <div>
+          <div className="flex items-center justify-center">
             <Icon id="book-mark" strokeWidth={1} />
           </div>
         </a>
         <a href="">
-          <div>
+          <div className="flex items-center justify-center">
             <Icon id="shopping-cart" strokeWidth={1} fill="black" />
           </div>
         </a>
