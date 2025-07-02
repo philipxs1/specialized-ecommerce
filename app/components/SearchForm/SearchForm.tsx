@@ -1,30 +1,43 @@
-import React, { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Icon from "~/ui/Icon/Icon";
 
-function SearchForm() {
-  const [search, setSearch] = useState("");
-
-  function handleSubmit(event: any) {
-    event.preventDefault();
-    console.log("hi");
-  }
+function SearchForm({
+  searchQuery,
+  setSearchQuery,
+  openSearchModal,
+  handleSubmit,
+}) {
+  useEffect(() => {}, []);
 
   return (
-    <form className="w-full" onSubmit={handleSubmit}>
-      <label htmlFor="default-search" />
-      <div className="relative block">
-        <div className="absolute top-0 bottom-0 left-0 m-auto h-6 w-6 cursor-pointer pl-2">
-          <Icon id="search" strokeWidth={1} size={24} />
-        </div>
-        <input
-          type="text"
-          name="search"
-          id="default-search"
-          placeholder="What are you looking for?"
-          className="bg-gray-primary block h-8 min-w-2xs rounded-sm border-none p-[5px] pl-10 text-xs inset-shadow-xs placeholder:text-xs focus:outline-none"
-        />
+    <div className="relative h-8">
+      <div className="bg-gray-border absolute h-full max-w-[786px] min-w-[300px] rounded-[8px]">
+        <form
+          action="search"
+          className="relative flex w-full items-center rounded-sm"
+          onSubmit={handleSubmit}
+        >
+          <button
+            type="submit"
+            className="absolute top-0 bottom-0 left-0 flex h-full w-8 cursor-pointer items-center justify-center"
+          >
+            <Icon id="search" strokeWidth={1} />
+          </button>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              if (e.target.value.length > 0) {
+                openSearchModal();
+              }
+            }}
+            placeholder="What are you looking for?"
+            className="relative h-full grow border-none px-[5px] py-[5px] pl-8 outline-none placeholder:text-sm"
+          />
+        </form>
       </div>
-    </form>
+    </div>
   );
 }
 

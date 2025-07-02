@@ -2,10 +2,26 @@ import SearchForm from "~/components/SearchForm/SearchForm";
 
 import { Link } from "react-router";
 import Icon from "~/ui/Icon/Icon";
+import SearchModal from "../SearchModal/SearchModal";
+import { useState } from "react";
 
 const Nav = () => {
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const openSearchModal = () => setIsSearchModalOpen(true);
+  const closeSearchModal = () => setIsSearchModalOpen(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.length > 0) {
+      console.log(console.log("hi kyle"));
+      openSearchModal();
+    }
+  };
+
   return (
-    <div className="bg-primary border-gray-border flex items-baseline border-b-1 px-6 py-6">
+    <div className="border-gray-border flex items-baseline border-b-1 pb-6">
       <div className="mr-auto flex grow items-center justify-start gap-8">
         <Link to="/">
           <svg
@@ -61,23 +77,36 @@ const Nav = () => {
             ></path>
           </svg>
         </Link>
-        <SearchForm />
+        <SearchForm
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          openSearchModal={openSearchModal}
+          handleSubmit={handleSubmit}
+        />
+        <SearchModal
+          isOpen={isSearchModalOpen}
+          onClose={closeSearchModal}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
       </div>
 
-      <nav className="hover:text-nav-hover flex gap-6.5">
-        <a href="" className="flex gap-2">
-          <div>
+      <nav className="flex items-center justify-center gap-6.5">
+        <a href="" className="group flex items-center gap-2">
+          <div className="relative flex items-center justify-center overflow-hidden rounded-full border-1 border-black">
             <Icon id="user" strokeWidth={1} />
           </div>
-          Sign In
+          <span className="group-hover:text-nav-hover align-baseline text-xs">
+            Sign in
+          </span>
         </a>
         <a href="">
-          <div>
+          <div className="flex items-center justify-center">
             <Icon id="book-mark" strokeWidth={1} />
           </div>
         </a>
         <a href="">
-          <div>
+          <div className="flex items-center justify-center">
             <Icon id="shopping-cart" strokeWidth={1} fill="black" />
           </div>
         </a>
