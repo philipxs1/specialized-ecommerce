@@ -2,12 +2,12 @@ import React from "react";
 
 const SuperHeader = () => {
   return (
-    <div className="bg-black-super-header flex h-8 w-full items-center justify-center p-2.5">
-      <span className="block text-[1rem] font-light text-white">
+    <aside className="bg-black-super-header flex h-8 w-full items-center justify-center p-2.5">
+      <p className="block text-[1rem] leading-[150%] font-[400] text-white">
         Free shipping on parts, accessories and apparel orders over $250
         (excludes bikes)
-      </span>
-    </div>
+      </p>
+    </aside>
   );
 };
 

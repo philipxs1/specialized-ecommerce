@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router";
 import Icon from "~/ui/Icon/Icon";
 
 const NavItems = [
@@ -18,21 +19,21 @@ const GloablNav = () => {
         <ul className="flex gap-6 font-medium">
           {NavItems.map((item) => (
             <li key={item} className="cursor-pointer">
-              <a href="/" />
+              <NavLink to={`/shop/bikes/${item}`} />
               {item}
             </li>
           ))}
         </ul>
       </nav>
       <div>
-        <a href="" className="flex items-center gap-2">
+        <NavLink to="/" className="flex items-center gap-2">
           <div>
             <Icon id="home" strokeWidth={1} />
           </div>
           <span className="hover:text-nav-hover align-baseline text-xs">
             find a retailer
           </span>
-        </a>
+        </NavLink>
       </div>
     </div>
   );

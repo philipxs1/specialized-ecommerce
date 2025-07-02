@@ -2,10 +2,26 @@ import SearchForm from "~/components/SearchForm/SearchForm";
 
 import { Link } from "react-router";
 import Icon from "~/ui/Icon/Icon";
+import SearchModal from "../SearchModal/SearchModal";
+import { useState } from "react";
 
 const Nav = () => {
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const openSearchModal = () => setIsSearchModalOpen(true);
+  const closeSearchModal = () => setIsSearchModalOpen(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.length > 0) {
+      console.log(console.log("hi kyle"));
+      openSearchModal();
+    }
+  };
+
   return (
-    <div className="bg-primary border-gray-border flex items-baseline border-b-1 pb-6">
+    <div className="border-gray-border flex items-baseline border-b-1 pb-6">
       <div className="mr-auto flex grow items-center justify-start gap-8">
         <Link to="/">
           <svg
@@ -61,7 +77,18 @@ const Nav = () => {
             ></path>
           </svg>
         </Link>
-        <SearchForm />
+        <SearchForm
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          openSearchModal={openSearchModal}
+          handleSubmit={handleSubmit}
+        />
+        <SearchModal
+          isOpen={isSearchModalOpen}
+          onClose={closeSearchModal}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
       </div>
 
       <nav className="flex items-center justify-center gap-6.5">
