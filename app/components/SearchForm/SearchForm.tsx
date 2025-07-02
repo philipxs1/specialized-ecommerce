@@ -1,12 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "~/ui/Icon/Icon";
 
+interface Props {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  openSearchModal: () => void;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}
+
 function SearchForm({
   searchQuery,
   setSearchQuery,
   openSearchModal,
   handleSubmit,
-}) {
+}: Props) {
   useEffect(() => {}, []);
 
   return (

@@ -2,7 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import Icon from "~/ui/Icon/Icon";
 
-const SearchModal = ({ isOpen, onClose, searchQuery, setSearchQuery }) => {
+interface Props {
+  isOpen: boolean;
+  onClose: () => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
+
+const SearchModal = ({
+  isOpen,
+  onClose,
+  searchQuery,
+  setSearchQuery,
+}: Props) => {
   const modalRef = useRef<any>(null);
   const searchInputRef = useRef<any>(null);
 
@@ -13,8 +25,8 @@ const SearchModal = ({ isOpen, onClose, searchQuery, setSearchQuery }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
       }
     };
