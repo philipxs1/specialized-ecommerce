@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <SuperHeader />
-      <div className="p-6">
+      <div className="px-6 shadow-md">
         <Nav />
         <GloablNav />
       </div>

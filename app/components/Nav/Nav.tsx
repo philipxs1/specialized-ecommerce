@@ -21,7 +21,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="border-gray-border flex items-baseline border-b-1 pb-6">
+    <div className="border-gray-border flex items-baseline border-b-1 py-4">
       <div className="mr-auto flex grow items-center justify-start gap-8">
         <Link to="/">
           <svg

@@ -11,7 +11,7 @@ function SearchForm({
 
   return (
     <div className="relative h-8">
-      <div className="bg-gray-border absolute h-full max-w-[786px] min-w-[300px] rounded-[8px]">
+      <div className="bg-gray-border absolute h-full max-w-[786px] min-w-[300px] rounded-[4px]">
         <form
           action="search"
           className="relative flex w-full items-center rounded-sm"
@@ -33,7 +33,7 @@ function SearchForm({
               }
             }}
             placeholder="What are you looking for?"
-            className="relative h-full grow border-none px-[5px] py-[5px] pl-8 outline-none placeholder:text-sm"
+            className="relative h-full grow border-none px-[5px] py-[5px] pl-8 outline-none placeholder:text-xs"
           />
         </form>
       </div>

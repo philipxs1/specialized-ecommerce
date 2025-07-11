@@ -16,11 +16,13 @@ const GloablNav = () => {
   return (
     <div className="flex pt-3 pb-2 text-[0.75rem]">
       <nav className="flex-1">
-        <ul className="flex gap-6 font-medium">
+        <ul className="flex gap-10 font-medium">
           {NavItems.map((item) => (
-            <li key={item} className="cursor-pointer">
-              <NavLink to={`/shop/bikes/${item}`} />
-              {item}
+            <li key={item} className="group relative transform cursor-pointer">
+              <NavLink to={`/shop/${item}`}>
+                {item}
+                <span className="absolute bottom-0 left-0 h-[0.125em] w-0 rounded-full bg-black duration-400 ease-in-out group-hover:w-full" />
+              </NavLink>
             </li>
           ))}
         </ul>
