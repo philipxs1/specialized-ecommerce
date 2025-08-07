@@ -9,9 +9,20 @@ import {
 export default [
   layout("routes/layout.tsx", [
     index("routes/home.tsx"),
+
     ...prefix("shop", [
       index("routes/shop/index.tsx"),
       route("bikes", "routes/shop/bikes/index.tsx"),
+      route("cycling-clothing", "routes/shop/cycling-clothing/index.tsx"),
+      ...prefix("cycling-gear", [
+        route("bike-parts", "routes/shop/cycling-gear/bike-parts/index.tsx"),
+        route(
+          "bike-accessories",
+          "routes/shop/cycling-gear/bike-accessories/index.tsx",
+        ),
+      ]),
+      route("sale", "routes/shop/sale/index.tsx"),
     ]),
+    route("*", "routes/not-found.tsx"),
   ]),
 ] satisfies RouteConfig;

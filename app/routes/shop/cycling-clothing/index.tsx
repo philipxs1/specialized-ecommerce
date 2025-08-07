@@ -1,3 +1,3 @@
 export default function ClothingRoute() {
-  return <div>clothing</div>;
+  return <div>Clothing</div>;
 }

@@ -1,6 +1,12 @@
 import Icon from "~/ui/Icon/Icon";
 
-const globalNav = ["Bikes", "Apparel", "Parts", "accessories", "Sale"];
+export const NAVLINKS = [
+  { name: "Bikes", href: "/shop/bikes" },
+  { name: "Clothing", href: "/shop/cycling-clothing" },
+  { name: "Parts", href: "/shop/cycling-gear/bike-parts" },
+  { name: "Accessories", href: "/shop/cycling-gear/bike-accessories" },
+  { name: "Sale", href: "/shop/sale" },
+];
 
 const Header = () => {
   return (
@@ -70,9 +76,9 @@ const Header = () => {
             {/* middle nav */}
             <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
               <nav className="flex w-min justify-center gap-12">
-                {globalNav.map((navItem) => (
+                {NAVLINKS.map(({ name, href }) => (
                   <span className="font-bold">
-                    <a href={`/${navItem}`}>{navItem}</a>
+                    <a href={href}>{name}</a>
                   </span>
                 ))}
               </nav>
