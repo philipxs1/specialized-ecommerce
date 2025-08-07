@@ -5,8 +5,10 @@ import {
   Bookmark,
   Home,
   X,
+  Menu,
   type IconProps as FeatherIconProps,
 } from "react-feather";
+
 import type { ComponentType } from "react";
 
 type IconId =
@@ -15,6 +17,7 @@ type IconId =
   | "book-mark"
   | "shopping-cart"
   | "home"
+  | "menu"
   | "close";
 
 const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
@@ -24,6 +27,7 @@ const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   "shopping-cart": ShoppingCart,
   home: Home,
   close: X,
+  menu: Menu,
 };
 
 type IconProps = {
@@ -37,7 +41,7 @@ type IconProps = {
 
 const Icon = ({
   id,
-  size = 24,
+  size = 16,
   color = "currentColor",
   strokeWidth = 2,
   fill = "none",
