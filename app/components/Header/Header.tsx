@@ -2,7 +2,7 @@ import Icon from "~/ui/Icon/Icon";
 
 export const NAVLINKS = [
   { name: "Bikes", href: "/shop/bikes" },
-  { name: "Clothing", href: "/shop/cycling-clothing" },
+  { name: "Apparel", href: "/shop/cycling-clothing" },
   { name: "Parts", href: "/shop/cycling-gear/bike-parts" },
   { name: "Accessories", href: "/shop/cycling-gear/bike-accessories" },
   { name: "Sale", href: "/shop/sale" },
@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header
       id="header-wrapper"
-      className="sticky top-0 z-999 flex w-full max-w-full flex-col"
+      className="sticky top-0 z-999 flex w-full max-w-full flex-col shadow-[0_0_4px_4px_rgba(0,0,0,0.03]"
     >
       <div className="w-full">
         <div className="relative z-2 flex min-h-[50px] w-full items-center p-4 lg:px-6">
