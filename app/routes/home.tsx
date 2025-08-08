@@ -7,7 +7,7 @@ export default function Home() {
       <section id="component-1">
         <div className="@container/hero-banner w-full overflow-y-hidden">
           <div className="relative flex h-auto flex-col items-start justify-center text-left @4xl/hero-banner:h-[610px] @4xl/hero-banner:items-center">
-            <picture className="relative inset-0 z-0 aspect-[3/2] w-full object-cover @4xl/hero-banner:absolute @4xl/hero-banner:aspect-auto @4xl/hero-banner:h-full">
+            <picture className="relative inset-0 z-0 aspect-[3/2] max-h-[324px] w-full object-cover @4xl/hero-banner:absolute @4xl/hero-banner:aspect-auto @4xl/hero-banner:h-full @4xl/hero-banner:max-h-full">
               <source srcSet={webCelebrate} media="(min-width: 56rem)" />
               <img
                 src={mobileCelebrate}
