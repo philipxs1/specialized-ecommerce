@@ -5,7 +5,7 @@ import SuperHeader from "~/components/SuperHeader/SuperHeader";
 
 export default function Layout() {
   return (
-    <div className="flex h-full flex-col">
+    <div className="relative flex h-full flex-col">
       <SuperHeader />
       <Header />
       <main className="p-full-page flex-1">
