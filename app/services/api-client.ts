@@ -16,6 +16,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     console.error("shopify API error:", error.message);
+    return Promise.reject(new Error("Failed to fetch from Shopify"));
   },
 );
 
