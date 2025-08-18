@@ -32,6 +32,4 @@ export function useHeaderVisibility({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  console.log();
 }

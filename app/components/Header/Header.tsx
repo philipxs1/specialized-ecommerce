@@ -12,7 +12,6 @@ export const NAVLINKS = [
 
 const Header = () => {
   const { isShowing } = useContext(HeaderContext);
-  console.log(isShowing);
 
   return (
     <header
@@ -82,7 +81,7 @@ const Header = () => {
             <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
               <nav className="flex w-min justify-center gap-12">
                 {NAVLINKS.map(({ name, href }) => (
-                  <span className="font-bold">
+                  <span key={name} className="font-bold">
                     <a href={href}>{name}</a>
                   </span>
                 ))}
