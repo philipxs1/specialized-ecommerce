@@ -96,6 +96,13 @@ body {
   font-family: var(--font-display);
 }
 
-.custom-border {
+.my-border {
   @apply border-2 border-red-500;
+}
+
+.custom-prev.swiper-button-disabled,
+.custom-next.swiper-button-disabled {
+  color: #d1d5db;
+  cursor: revert;
+  opacity: 0.5;
 }

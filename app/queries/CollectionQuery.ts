@@ -1,10 +1,12 @@
 export const ColletionsQuery = `
    query {
-      collections(first: 5) {
+      collections(first: 10) {
         edges {
           node {
             title
             id
+            image {
+            url}
           }
         }
       }

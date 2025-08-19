@@ -6,6 +6,9 @@ import {
   Home,
   X,
   Menu,
+  ArrowRight,
+  ChevronRight,
+  ChevronLeft,
   type IconProps as FeatherIconProps,
 } from "react-feather";
 
@@ -18,7 +21,10 @@ type IconId =
   | "shopping-cart"
   | "home"
   | "menu"
-  | "close";
+  | "close"
+  | "arrow-right"
+  | "chevron-right"
+  | "chevron-left";
 
 const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   search: Search,
@@ -28,6 +34,9 @@ const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   home: Home,
   close: X,
   menu: Menu,
+  "arrow-right": ArrowRight,
+  "chevron-right": ChevronRight,
+  "chevron-left": ChevronLeft,
 };
 
 type IconProps = {

@@ -1,19 +1,24 @@
 import HeroComponent from "~/components/HomePage/HeroComponent";
 import { HERODATA } from "~/data";
-import useCollections from "~/hooks/useCollections";
+
+import Carousel from "~/components/carousel/Carousel";
+import Icon from "~/ui/Icon/Icon";
 
 export default function Home() {
-  const { data: collections, isLoading, isError } = useCollections();
-  if (isLoading) return <p>Loading collections...</p>;
-  if (isError) return <p>Something went wrong loading collections</p>;
-
-  console.log(collections); //
   return (
     <div className="relative">
       <section id="component-1">
         {HERODATA.map((item) => (
           <HeroComponent key={item.id} {...item} />
         ))}
+      </section>
+      <section id="component-carousel">
+        <div className="relative w-full overflow-hidden">
+          <div className="m-auto mx-0 w-full max-w-[2000px] p-6">
+            <h2 className="pt-4 pb-8 text-3xl font-semibold">Shop</h2>
+            <Carousel />
+          </div>
+        </div>
       </section>
     </div>
   );
