@@ -13,6 +13,7 @@ export default [
     ...prefix("shop", [
       index("routes/shop/index.tsx"),
       route("bikes", "routes/shop/bikes/index.tsx"),
+      route("bikes/:handle", "routes/shop/bikes/[handle]/index.tsx"),
       route("cycling-clothing", "routes/shop/cycling-clothing/index.tsx"),
       ...prefix("cycling-gear", [
         route("bike-parts", "routes/shop/cycling-gear/bike-parts/index.tsx"),

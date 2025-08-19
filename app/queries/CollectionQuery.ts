@@ -4,6 +4,7 @@ export const ColletionsQuery = `
         edges {
           node {
             title
+            handle
             id
             image {
             url}

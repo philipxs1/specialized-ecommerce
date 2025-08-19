@@ -2,7 +2,6 @@ import HeroComponent from "~/components/HomePage/HeroComponent";
 import { HERODATA } from "~/data";
 
 import Carousel from "~/components/carousel/Carousel";
-import Icon from "~/ui/Icon/Icon";
 
 export default function Home() {
   return (
@@ -15,7 +14,7 @@ export default function Home() {
       <section id="component-carousel">
         <div className="relative w-full overflow-hidden">
           <div className="m-auto mx-0 w-full max-w-[2000px] p-6">
-            <h2 className="pt-4 pb-8 text-3xl font-semibold">Shop</h2>
+            <h2 className="pt-2 pb-8 text-3xl font-semibold">Shop</h2>
             <Carousel />
           </div>
         </div>

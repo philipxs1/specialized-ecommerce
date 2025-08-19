@@ -1,16 +1,13 @@
+import type { Collection } from "~/entities/Collection";
 import Icon from "~/ui/Icon/Icon";
 ``;
 
-type Collection = {
-  title: string;
-  id: string;
-  image: { url: string };
-};
+type Props = Collection;
 
-const NavTile = ({ title, id, image }: Collection) => {
+const NavTile = ({ title, id, image, handle }: Props) => {
   return (
     <a
-      href="/"
+      href={`/shop/bikes/${handle}`}
       className="relative flex aspect-[1/1] w-full max-w-[650px] overflow-hidden rounded-[8px]"
     >
       <div

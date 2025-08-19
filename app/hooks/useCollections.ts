@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type Collection from "~/entities/Collection";
+import type { Collection } from "~/entities/Collection";
 import { ColletionsQuery } from "~/queries/CollectionQuery";
 import axiosInstance from "~/services/api-client";
 

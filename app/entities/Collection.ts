@@ -1,6 +1,7 @@
 import type { Product } from "./Products";
 
-export default interface Collection {
+export interface Collection {
+  handle: string;
   title: string;
   id: string;
   image: { url: string };
