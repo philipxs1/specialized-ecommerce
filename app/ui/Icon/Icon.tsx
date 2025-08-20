@@ -9,6 +9,11 @@ import {
   ArrowRight,
   ChevronRight,
   ChevronLeft,
+  ChevronDown,
+  ChevronUp,
+  Instagram,
+  Facebook,
+  Youtube,
   type IconProps as FeatherIconProps,
 } from "react-feather";
 
@@ -24,7 +29,12 @@ type IconId =
   | "close"
   | "arrow-right"
   | "chevron-right"
-  | "chevron-left";
+  | "chevron-left"
+  | "chevron-down"
+  | "chevron-up"
+  | "instagram"
+  | "youtube"
+  | "facebook";
 
 const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   search: Search,
@@ -37,6 +47,11 @@ const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   "arrow-right": ArrowRight,
   "chevron-right": ChevronRight,
   "chevron-left": ChevronLeft,
+  "chevron-down": ChevronDown,
+  "chevron-up": ChevronUp,
+  instagram: Instagram,
+  facebook: Facebook,
+  youtube: Youtube,
 };
 
 type IconProps = {
@@ -65,7 +80,7 @@ const Icon = ({
   }
 
   return (
-    <div className={`inline-block ${className}`} {...delegated}>
+    <div className={`${className}`} {...delegated}>
       <Component
         size={size}
         color={color}

@@ -4,7 +4,8 @@ const SuperHeader = () => {
   return (
     <aside className="flex h-8 w-full items-center justify-between bg-black px-10 py-2 text-white">
       <span className="block text-xs leading-[150%] font-[400]">
-        Free shipping on orders over $250
+        This is a training/demo site. Not affiliated with Specialized. All
+        content is for educational purposes only.
       </span>
       <div className="flex gap-5 text-xs">
         <span>Support Center</span>

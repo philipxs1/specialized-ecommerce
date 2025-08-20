@@ -50,7 +50,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <HeaderProvider>
-        <Outlet />;
+        <Outlet />
       </HeaderProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>

@@ -1,16 +1,14 @@
 import { useContext } from "react";
 import { HeaderContext } from "~/context/HeaderProvider";
+import type { Navigation } from "~/entities/Navigation";
+import useMainNavigation from "~/hooks/useMainNavigation";
 import Icon from "~/ui/Icon/Icon";
 
-export const NAVLINKS = [
-  { name: "Bikes", href: "/shop/bikes" },
-  { name: "Apparel", href: "/shop/cycling-clothing" },
-  { name: "Parts", href: "/shop/cycling-gear/bike-parts" },
-  { name: "Accessories", href: "/shop/cycling-gear/bike-accessories" },
-  { name: "Sale", href: "/shop/sale" },
-];
+interface HeaderProps {
+  navigation: Navigation;
+}
 
-const Header = () => {
+const Header = ({ navigation }: HeaderProps) => {
   const { isShowing } = useContext(HeaderContext);
 
   return (
@@ -80,9 +78,9 @@ const Header = () => {
             {/* middle nav */}
             <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
               <nav className="flex w-min justify-center gap-12">
-                {NAVLINKS.map(({ name, href }) => (
-                  <span key={name} className="font-bold">
-                    <a href={href}>{name}</a>
+                {navigation.items.map(({ title, url }) => (
+                  <span key={title} className="font-bold">
+                    <a href={url}>{title}</a>
                   </span>
                 ))}
               </nav>

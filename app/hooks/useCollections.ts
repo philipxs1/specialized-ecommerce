@@ -16,6 +16,9 @@ const useCollections = () => {
   return useQuery<Collection[], Error>({
     queryKey: ["collections"],
     queryFn: fetchCollections,
+    staleTime: Infinity,
+    gcTime: Infinity,
+    refetchOnWindowFocus: false,
   });
 };
 
