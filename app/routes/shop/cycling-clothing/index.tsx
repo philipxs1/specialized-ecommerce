@@ -8,12 +8,14 @@ export default function ClothingRoute() {
   if (isLoading) return <p>Loading collections...</p>;
   if (isError || !tiles) return <p>Something went wrong loading collections</p>;
 
+  console.log(tiles);
+
   return (
     <div>
       <div className="my-6">
-        <h2>Bikes</h2>
+        <h2>Cycling Clothing</h2>
       </div>
-      <Carousel tiles={tiles} />
+      <Carousel tiles={tiles.clothes} />
     </div>
   );
 }

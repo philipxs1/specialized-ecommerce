@@ -13,6 +13,7 @@ const MainCarousel = () => {
   if (isLoading) return <p>Loading collections...</p>;
   if (isError) return <p>Something went wrong loading collections</p>;
 
+  console.log(tiles);
   return (
     <div id="Maincarousel">
       <Swiper
@@ -32,7 +33,7 @@ const MainCarousel = () => {
         }}
       >
         {tiles &&
-          tiles.map((tile: Tile) => (
+          tiles?.homepage.map((tile: Tile) => (
             <SwiperSlide key={tile.title}>
               <NavTile {...tile} />
             </SwiperSlide>

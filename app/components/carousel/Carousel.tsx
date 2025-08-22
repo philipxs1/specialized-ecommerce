@@ -7,12 +7,15 @@ import { A11y, Navigation } from "swiper/modules";
 import Icon from "~/ui/Icon/Icon";
 import { useRef, useState } from "react";
 import type { Tile } from "~/entities/HomepageNavTiles";
+import CarouselTile from "./CarouselTile";
+import PromoTile from "./PromoTile";
 
-interface CarouselProps {
+export interface CarouselProps {
   tiles: Tile[];
+  promo?: Tile[];
 }
 
-const Carousel: React.FC<CarouselProps> = ({ tiles }) => {
+const Carousel: React.FC<CarouselProps> = ({ tiles, promo }) => {
   const swiperRef = useRef<swiperCore | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -45,21 +48,15 @@ const Carousel: React.FC<CarouselProps> = ({ tiles }) => {
         >
           {tiles?.map((tile) => (
             <SwiperSlide key={tile.title} style={{ width: "260px" }}>
-              <a
-                href={tile.link}
-                className="flex flex-col overflow-hidden rounded-lg shadow-xl"
-              >
-                <img
-                  src={tile.image}
-                  alt={tile.title}
-                  className="aspect-[1/1] w-full object-cover"
-                />
-                <div className="flex bg-white p-6">
-                  <h2 className="text-2xl font-bold break-words">
-                    {tile.title}
-                  </h2>
-                </div>
-              </a>
+              <CarouselTile {...tile} />
+            </SwiperSlide>
+          ))}
+          {promo?.map((tile) => (
+            <SwiperSlide
+              key={`promo-${tile.title}`}
+              style={{ width: "260px", height: "auto" }}
+            >
+              <PromoTile {...tile} />
             </SwiperSlide>
           ))}
         </Swiper>

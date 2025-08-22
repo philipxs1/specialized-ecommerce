@@ -1,50 +1,41 @@
 import { useQuery } from "@tanstack/react-query";
-import type {
-  MetaField,
-  MetaObjectNode,
-  MetaObjectResponse,
-  Tile,
-} from "~/entities/HomepageNavTiles";
-
+import type { MetaObjectNode, Tile } from "~/entities/HomepageNavTiles";
 import { MetaobjectsQuery } from "~/queries/MetaobjectsQuery";
-
 import axiosInstance from "~/services/api-client";
 
-const fetchHomepageTiles = async (): Promise<Tile[]> => {
-  const QUERY = MetaobjectsQuery("bikespage_tiles");
+const fetchTiles = async (): Promise<{ bikes: Tile[]; promos: Tile[] }> => {
+  const FETCH_TILES_QUERY = `query { ${MetaobjectsQuery("bikespage", "bikespage_tiles")}
+  ${MetaobjectsQuery("promo", "promo_tiles")}
+  }`;
 
-  const response = await axiosInstance.post("", {
-    query: QUERY,
-  });
+  const response = await axiosInstance.post("", { query: FETCH_TILES_QUERY });
+  const data = response.data.data;
 
-  const edges = response.data.data.metaobjects.edges;
+  const mapTiles = (edges: { node: MetaObjectNode }[]): Tile[] =>
+    edges.map((edge) => {
+      const fields = edge.node.fields;
+      const titleField = fields.find((f) => f.key === "title");
+      const imageField = fields.find((f) => f.key === "image");
+      const linkField = fields.find((f) => f.key === "url");
 
-  const tiles = edges.map((edge: { node: MetaObjectNode }) => {
-    const fields = edge.node.fields;
+      return {
+        title: titleField?.value || "",
+        link: linkField?.value || "",
+        image: imageField?.reference?.image?.url || "",
+      };
+    });
 
-    const titleField = fields.find((f: any) => f.key === "title");
-    const imageField = fields.find((f: any) => f.key === "image");
-    const linkField = fields.find((f: any) => f.key === "url");
-
-    const imageUrl = imageField?.reference?.image?.url || "";
-
-    return {
-      title: titleField?.value || "",
-      link: linkField?.value || "",
-      image: imageUrl,
-    };
-  });
-
-  return tiles;
+  return {
+    bikes: mapTiles(data.bikespage.edges),
+    promos: mapTiles(data.promo.edges),
+  };
 };
 
-const useBikespageTiles = () => {
+const useHomepageTiles = () => {
   return useQuery({
-    queryKey: ["bikespageTiles"],
-    queryFn: fetchHomepageTiles,
+    queryKey: ["homepageTiles"],
+    queryFn: fetchTiles,
   });
 };
 
-export default useBikespageTiles;
-
-function navtileData() {}
+export default useHomepageTiles;

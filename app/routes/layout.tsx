@@ -35,7 +35,7 @@ export default function Layout() {
   }
 
   return (
-    <div className="relative flex h-full flex-col">
+    <div className="relative mx-auto flex h-full max-w-[2600px] flex-col">
       <SuperHeader />
       {
         <Header

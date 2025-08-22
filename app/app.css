@@ -38,3 +38,17 @@ body {
   cursor: revert;
   opacity: 0.5;
 }
+
+.last-slide-image {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.background-gradient {
+  background: linear-gradient(
+    181.63deg,
+    rgba(0, 0, 0, 0) 21.69%,
+    rgba(0, 0, 0, 0.7) 93.89%
+  );
+}

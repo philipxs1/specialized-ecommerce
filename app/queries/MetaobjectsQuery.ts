@@ -1,5 +1,5 @@
-export const MetaobjectsQuery = (type: string) => `query {
-  metaobjects(type: "${type}", first: 20) {
+export const MetaobjectsQuery = (alias: string, type: string) => `
+  ${alias}:metaobjects(type: "${type}", first: 20) {
     edges {
       node {
         handle
@@ -18,4 +18,4 @@ export const MetaobjectsQuery = (type: string) => `query {
       }
     }
   }
-}`;
+`;
