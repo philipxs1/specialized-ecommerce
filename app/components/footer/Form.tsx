@@ -12,6 +12,8 @@ const Form = () => {
       <div className="relative flex">
         <div className="w-full">
           <input
+            aria-label="email"
+            name="email"
             type="text"
             placeholder="Email Address"
             className="bg-black-lighter h-[56px] w-full rounded-l-md px-4 py-2 font-normal text-white placeholder:text-white focus:outline-0"

@@ -1,16 +1,18 @@
-import type { Route } from ".react-router/types/app/routes/shop/bikes/+types";
+import Carousel from "~/components/carousel/Carousel";
+import useBikespageTiles from "~/hooks/useBikespageTiles";
 
-export async function loader() {
-  return {
-    message: "Phil",
-  };
-}
+export default function BikesRoute() {
+  const { data: tiles, isLoading, isError } = useBikespageTiles();
 
-export default function BikesRoute({ loaderData }: Route.ComponentProps) {
+  if (isLoading) return <p>Loading collections...</p>;
+  if (isError || !tiles) return <p>Something went wrong loading collections</p>;
+
   return (
     <div>
-      Bikes
-      <div>{JSON.stringify(loaderData, null, 2)}</div>
+      <div className="my-6">
+        <h2>Bikes</h2>
+      </div>
+      <Carousel tiles={tiles} />
     </div>
   );
 }

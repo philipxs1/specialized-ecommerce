@@ -15,6 +15,7 @@ import {
   Facebook,
   Youtube,
   type IconProps as FeatherIconProps,
+  ArrowLeft,
 } from "react-feather";
 
 import type { ComponentType } from "react";
@@ -28,6 +29,7 @@ type IconId =
   | "menu"
   | "close"
   | "arrow-right"
+  | "arrow-left"
   | "chevron-right"
   | "chevron-left"
   | "chevron-down"
@@ -45,6 +47,7 @@ const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   close: X,
   menu: Menu,
   "arrow-right": ArrowRight,
+  "arrow-left": ArrowLeft,
   "chevron-right": ChevronRight,
   "chevron-left": ChevronLeft,
   "chevron-down": ChevronDown,

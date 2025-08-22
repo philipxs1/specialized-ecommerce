@@ -1,13 +1,13 @@
-import type { Collection } from "~/entities/Collection";
+import type { Tile } from "~/entities/HomepageNavTiles";
 import Icon from "~/ui/Icon/Icon";
 ``;
 
-type Props = Collection;
+type Props = Tile;
 
-const NavTile = ({ title, id, image, handle }: Props) => {
+const NavTile = ({ title, image, link }: Props) => {
   return (
     <a
-      href={`/shop/bikes/${handle}`}
+      href={link}
       className="relative flex aspect-[1/1] w-full max-w-[650px] overflow-hidden rounded-[8px]"
     >
       <div
@@ -19,7 +19,7 @@ const NavTile = ({ title, id, image, handle }: Props) => {
       rgb(0, 0, 0) 15%,
       rgba(0, 0, 0, 0.8) 25%,
       rgba(0, 0, 0, 0) 50%
-    ), url(${image.url})`,
+    ), url(${image})`,
         }}
       />
 

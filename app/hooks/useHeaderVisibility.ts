@@ -12,7 +12,7 @@ export function useHeaderVisibility({
       const currentScrollY = window.scrollY;
       const scrollBoundery = 50;
 
-      if (currentScrollY! >= scrollBoundery) {
+      if (currentScrollY >= scrollBoundery) {
         setLastScrollY(currentScrollY);
         return;
       }

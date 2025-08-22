@@ -1,49 +1,88 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import NavTile from "./NavTile";
-import useCollections from "~/hooks/useCollections";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import Icon from "~/ui/Icon/Icon";
+import React from "react";
+import { SwiperSlide, Swiper } from "swiper/react";
+import type swiperCore from "swiper";
 
-const Carousel = () => {
-  const { data: collections, isLoading, isError } = useCollections();
-  if (isLoading) return <p>Loading collections...</p>;
-  if (isError) return <p>Something went wrong loading collections</p>;
+import "swiper/css";
+import { A11y, Navigation } from "swiper/modules";
+import Icon from "~/ui/Icon/Icon";
+import { useRef, useState } from "react";
+import type { Tile } from "~/entities/HomepageNavTiles";
+
+interface CarouselProps {
+  tiles: Tile[];
+}
+
+const Carousel: React.FC<CarouselProps> = ({ tiles }) => {
+  const swiperRef = useRef<swiperCore | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+  const [showPrev, setShowPrev] = useState(false);
+  const [showNext, setShowNext] = useState(true);
 
   return (
-    <div id="carousel">
-      <Swiper
-        style={{ overflow: "visible", marginBottom: "2.375rem" }}
-        modules={[A11y, Navigation]}
-        spaceBetween={16}
-        slidesPerView={1} // default for mobile
-        slidesPerGroup={1} // move one at a time
-        breakpoints={{
-          640: { slidesPerView: 2.5 },
-          1024: { slidesPerView: 3.5 },
-          1280: { slidesPerView: 4.5 },
-        }}
-        navigation={{
-          prevEl: ".custom-prev",
-          nextEl: ".custom-next",
-        }}
-      >
-        {collections &&
-          collections.map((collection) => (
-            <SwiperSlide key={collection.id}>
-              <NavTile {...collection} />
+    <div className="relative isolate overflow-hidden">
+      <div className="mx-auto w-full max-w-[min(100vw,1920px)] px-6 pb-1">
+        <Swiper
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          style={{ overflow: "visible" }}
+          modules={[Navigation, A11y]}
+          slidesPerView="auto"
+          slidesPerGroup={1}
+          spaceBetween={20}
+          onSliderMove={() => {
+            const swiper = swiperRef.current;
+            if (!swiper) return;
+            setShowPrev(swiper.translate < 0);
+            setShowNext(swiper.translate > swiper.maxTranslate());
+          }}
+          onTransitionEnd={() => {
+            const swiper = swiperRef.current;
+            if (!swiper) return;
+            // update after snap-back or normal slide
+            setShowPrev(swiper.translate < 0);
+            setShowNext(swiper.translate > swiper.maxTranslate());
+          }}
+        >
+          {tiles?.map((tile) => (
+            <SwiperSlide key={tile.title} style={{ width: "260px" }}>
+              <a
+                href={tile.link}
+                className="flex flex-col overflow-hidden rounded-lg shadow-xl"
+              >
+                <img
+                  src={tile.image}
+                  alt={tile.title}
+                  className="aspect-[1/1] w-full object-cover"
+                />
+                <div className="flex bg-white p-6">
+                  <h2 className="text-2xl font-bold break-words">
+                    {tile.title}
+                  </h2>
+                </div>
+              </a>
             </SwiperSlide>
           ))}
-      </Swiper>
-      <div className="mt-9 flex w-full justify-end">
-        <button className="custom-prev cursor-pointer transition">
-          <Icon id="chevron-left" size={34} />
-        </button>
-        <button className="custom-next cursor-pointer transition">
-          <Icon id="chevron-right" size={34} />
-        </button>
+        </Swiper>
+        <div className="">
+          <div className="absolute top-10 left-[60px] z-1">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="custom-prev cursor-pointer rounded-sm bg-white p-2 transition-opacity"
+              style={{ opacity: showPrev ? 1 : 0 }}
+            >
+              <Icon id="arrow-left" size={34} strokeWidth={1} />
+            </button>
+          </div>
+          <div className="absolute top-10 right-[60px] z-1">
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
+              className="custom-next cursor-pointer rounded-sm bg-white p-2 transition-opacity"
+              style={{ opacity: showNext ? 1 : 0 }}
+            >
+              <Icon id="arrow-right" size={34} strokeWidth={1} />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

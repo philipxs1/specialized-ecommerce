@@ -13,7 +13,7 @@ const MenuColumn = ({ title, items }: MenuColumnProps) => {
       </h2>
       <ul className="flex flex-col gap-2">
         {items.map((item) => (
-          <li className="cursor-pointer text-wrap">
+          <li key={item} className="cursor-pointer text-wrap">
             <p className="text-xs">{item}</p>
           </li>
         ))}
