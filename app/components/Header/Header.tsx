@@ -12,7 +12,7 @@ const Header = ({ navigation }: HeaderProps) => {
   return (
     <header
       id="header-wrapper"
-      className={`top-0 z-999 flex w-full max-w-full flex-col bg-white shadow-[0_0_4px_4px_rgba(0,0,0,0.03] transition-transform duration-300`}
+      className={`top-0 z-999 flex w-full max-w-full flex-col bg-white shadow-xs transition-transform duration-300`}
     >
       <div className="w-full">
         <div className="relative z-2 flex min-h-[50px] w-full items-center p-4 lg:px-6">
