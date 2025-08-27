@@ -23,8 +23,8 @@ const Carousel: React.FC<CarouselProps> = ({ tiles, promo }) => {
   const [showNext, setShowNext] = useState(true);
 
   return (
-    <div className="relative isolate overflow-hidden">
-      <div className="mx-auto w-full max-w-[min(100vw,1920px)] px-6 pb-1">
+    <div className="relative isolate overflow-hidden py-6">
+      <div className="mx-auto w-full max-w-[min(100vw,var(--setmax-width))] px-6 pb-1">
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           style={{ overflow: "visible" }}

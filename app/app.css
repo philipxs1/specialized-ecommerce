@@ -21,6 +21,8 @@
   --color-modal-bg: hsl(0 0% 0% / 0.5);
   --p-global-page: 6;
   --border-test: border-2 border-red;
+
+  --setmax-width: 1920px;
 }
 
 html,
@@ -58,4 +60,18 @@ body {
     rgba(0, 0, 0, 0) 21.69%,
     rgba(0, 0, 0, 0.7) 93.89%
   );
+}
+
+.tile-transform {
+  transition: 250ms ease-in-out;
+  transform-origin: center top;
+  will-change: transform;
+}
+
+.tile-transform:hover {
+  transform: scale(1.05);
+}
+
+.sidebar-scrollbar {
+  scrollbar-width: none;
 }

@@ -7,7 +7,7 @@ const CarouselTile = ({ link, image, title }: Props) => {
   return (
     <a
       href={link}
-      className="flex flex-col overflow-hidden rounded-lg shadow-xl"
+      className="tile-transform flex flex-col overflow-hidden rounded-lg shadow-md"
     >
       <img
         src={image}

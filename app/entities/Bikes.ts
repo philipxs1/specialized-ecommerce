@@ -3,7 +3,7 @@ export interface BikesData {
   allBikes: Product[];
 }
 
-interface Product {
+export interface Product {
   title: string;
   price: number;
   currencyCode: string;

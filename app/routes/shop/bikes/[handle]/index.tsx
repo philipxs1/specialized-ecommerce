@@ -1,18 +1,37 @@
+import { useEffect } from "react";
 import { useParams } from "react-router";
+import ProductGrid from "~/components/products/ProductGrid";
+import SideBar from "~/components/sidebar/SideBar";
 import useCollections from "~/hooks/useCollections";
+import useProducts from "~/hooks/useProductsByHandle";
 
 const index = () => {
-  const { handle } = useParams();
-  const { data: collections, isLoading, isError } = useCollections();
+  const { handle } = useParams<{ handle: string }>();
+  if (!handle) return <div>No collection selected</div>;
+
+  const { data: products, isLoading, isError } = useProducts(handle);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading collections</div>;
 
-  const collection = collections?.find((c) => c.handle === handle);
+  return (
+    <div>
+      <div className="mx-6 my-6">
+        <h1 className="text-2xl font-bold">
+          {products?.title}
+          &nbsp;
+          <span className="text-lg font-normal">
+            ({products?.allBikes.length})
+          </span>
+        </h1>
+      </div>
 
-  if (!collection) return <div>Collection not found</div>;
-
-  return <h1>{collection.title}</h1>;
+      <section className="max-w-[var(--setmax-width) relative my-0 mr-auto ml-auto flex min-h-lvw w-full border-2 border-black py-4">
+        <SideBar />
+        <ProductGrid bikes={products?.allBikes ?? []} />
+      </section>
+    </div>
+  );
 };
 
 export default index;

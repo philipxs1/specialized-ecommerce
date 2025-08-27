@@ -6,7 +6,7 @@ const PromoTile = ({ link, image, title }: Props) => {
   return (
     <a
       href={link}
-      className="relative flex h-full flex-col overflow-hidden rounded-lg shadow-xl"
+      className="tile-transform relative flex h-full flex-col overflow-hidden rounded-lg shadow-xl"
     >
       <img
         src={image}

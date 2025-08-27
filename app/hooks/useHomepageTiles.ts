@@ -42,5 +42,3 @@ const useHomepageTiles = () => {
 };
 
 export default useHomepageTiles;
-
-function navtileData() {}

@@ -14,6 +14,8 @@ import {
   Instagram,
   Facebook,
   Youtube,
+  Plus,
+  Minus,
   type IconProps as FeatherIconProps,
   ArrowLeft,
 } from "react-feather";
@@ -36,7 +38,9 @@ type IconId =
   | "chevron-up"
   | "instagram"
   | "youtube"
-  | "facebook";
+  | "facebook"
+  | "plus"
+  | "minus";
 
 const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   search: Search,
@@ -55,6 +59,8 @@ const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   instagram: Instagram,
   facebook: Facebook,
   youtube: Youtube,
+  plus: Plus,
+  minus: Minus,
 };
 
 type IconProps = {
