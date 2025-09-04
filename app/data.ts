@@ -2,6 +2,7 @@ import mobileCelebrate from "./assets/Homepage/mobile_celebrate.webp";
 import desktopCelebrate from "./assets/Homepage/desktop_celebrate.webp";
 import mobileDemi from "./assets/Homepage/mobile_demi.webp";
 import desktopDemi from "./assets/Homepage/desktop_demi.webp";
+import type { Filters } from "./entities/Filters";
 
 type HeroSlide = {
   id: string;

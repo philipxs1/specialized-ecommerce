@@ -7,10 +7,11 @@ import "swiper/css/pagination";
 import Icon from "~/ui/Icon/Icon";
 import useHomepageTiles from "~/hooks/useHomepageTiles";
 import type { Tile } from "~/entities/HomepageNavTiles";
+import MainCarouselSkeleton from "./MainCarouselSkeleton";
 
 const MainCarousel = () => {
   const { data: tiles, isLoading, isError } = useHomepageTiles();
-  if (isLoading) return <p>Loading collections...</p>;
+  if (isLoading) return <MainCarouselSkeleton />;
   if (isError) return <p>Something went wrong loading collections</p>;
 
   return (

@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -12,6 +13,25 @@ import "./app.css";
 import HeaderProvider from "./context/HeaderProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { fetchMainNavigation } from "./hooks/useMainNavigation";
+import { fetchFooterMenus } from "./hooks/useFooterMenus";
+import { FilterProvider } from "./context/FilterProvider";
+
+const queryClient = new QueryClient();
+
+let hasFetchedHeaderFooter = false;
+
+export async function loader() {
+  const navigation = await fetchMainNavigation();
+  const footer = await fetchFooterMenus();
+
+  const footerMenusArray = Object.entries(footer).map(([menu, items]) => ({
+    title: menu,
+    items,
+  }));
+
+  return { navigation, footerMenusArray };
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -36,7 +56,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="h-full min-h-dvh">
-        {children}
+        <QueryClientProvider client={queryClient}>
+          {children}
+          <ReactQueryDevtools />
+        </QueryClientProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -44,16 +67,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-const queryClient = new QueryClient();
-
 export default function App() {
+  const { navigation, footerMenusArray } = useLoaderData();
   return (
-    <QueryClientProvider client={queryClient}>
-      <HeaderProvider>
-        <Outlet />
-      </HeaderProvider>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <HeaderProvider>
+      <FilterProvider>
+        <Outlet context={{ navigation, footerMenusArray }} />
+      </FilterProvider>
+    </HeaderProvider>
   );
 }
 

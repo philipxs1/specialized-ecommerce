@@ -11,12 +11,13 @@ import { MetaobjectsQuery } from "~/queries/MetaobjectsQuery";
 import axiosInstance from "~/services/api-client";
 
 const fetchHomepageTiles = async (): Promise<{ homepage: Tile[] }> => {
-  const QUERY = `query {
+  const query = `query {
     ${MetaobjectsQuery("homepage", "homepage_tile")}
   }`;
 
-  const response = await axiosInstance.post("", { query: QUERY });
+  const response = await axiosInstance.post("", { query });
   const data = response.data.data;
+  console.log(data);
 
   const mapTiles = (edges: { node: MetaObjectNode }[]): Tile[] =>
     edges.map((edge) => {

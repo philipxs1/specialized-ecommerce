@@ -8,7 +8,7 @@ function normalizeUrl(url: string): string {
   return url.replace(shopifyDomain, "");
 }
 
-const fetchMainNavigation = async (): Promise<Navigation> => {
+export const fetchMainNavigation = async (): Promise<Navigation> => {
   const response = await axiosInstance.post("", { query: MainNavigationQuery });
   const items = response.data.data.menu.items;
   return {

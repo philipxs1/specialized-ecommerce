@@ -8,7 +8,7 @@ import {
 } from "~/queries/FooterMenuQuery";
 import axiosInstance from "~/services/api-client";
 
-const fetchFooterMenus = async (): Promise<FooterMenus> => {
+export const fetchFooterMenus = async (): Promise<FooterMenus> => {
   const [shopRes, supportRes, resourcesRes, aboutRes] = await Promise.all([
     axiosInstance.post("", { query: FooterShopQuery }),
     axiosInstance.post("", { query: FooterSupportQuery }),
@@ -35,12 +35,9 @@ const useFooterMenus = () => {
   return useQuery<FooterMenus, Error>({
     queryKey: ["footerMenus"],
     queryFn: fetchFooterMenus,
-    staleTime: Infinity,
-    gcTime: Infinity,
+    staleTime: 1000 * 60 * 60,
+    refetchOnMount: false,
     refetchOnWindowFocus: false,
-    initialData: () => queryClient.getQueryData<FooterMenus>(["footerMenus"]),
-    initialDataUpdatedAt: () =>
-      queryClient.getQueryState(["footerMenus"])?.dataUpdatedAt,
   });
 };
 

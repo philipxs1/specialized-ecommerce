@@ -1,7 +1,5 @@
-import { useContext } from "react";
-import { HeaderContext } from "~/context/HeaderProvider";
 import type { Navigation } from "~/entities/Navigation";
-import useMainNavigation from "~/hooks/useMainNavigation";
+
 import Icon from "~/ui/Icon/Icon";
 
 interface HeaderProps {

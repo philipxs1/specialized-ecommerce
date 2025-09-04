@@ -87,3 +87,43 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 Built with ❤️ using React Router.
 
 Yoo!
+
+┌───────────────────────────────────────────────────────────┐
+│ Collection (e.g. "Bikes") │
+│ - id │
+│ - handle (e.g. "bikes") │
+│ - title │
+│ - description │
+│ - products[] │
+│ └─ product:  
+│ - id │
+│ - title │
+│ - handle │
+│ - priceRange │
+│ - images[] │
+│ - filters[] (Shopify built-in product filters) │
+│ - metafield: collection_settings →─────────────┐
+└───────────────────────────────────────────────────────────┘ │
+│
+▼
+┌──────────────────────────────────────────────────────────────┐
+│ Metaobject: Collection Settings │
+│ type: collection_settings │
+│ │
+│ - custom_title (string, optional) │
+│ │
+│ - carousel_images (list of metaobjects, optional) │
+│ └─ carousel_item: │
+│ - title (string) │
+│ - image (media) │
+│ - link (string, URL to product/collection/page) │
+│ │
+│ - menu (Navigation reference, optional) │
+│ - hero_banner (media, optional) │
+│ - extra_content (rich text, optional) │
+│ - filters (list of metaobjects, optional) │
+│ └─ filter_item: │
+│ - label (string, e.g. "Brand") │
+│ - type (string, e.g. "checkbox", "dropdown") │
+│ - options (list of strings, e.g. ["Trek","Giant"]) │
+└──────────────────────────────────────────────────────────────┘

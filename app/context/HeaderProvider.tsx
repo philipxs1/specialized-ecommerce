@@ -1,12 +1,12 @@
 import { useState, createContext } from "react";
 import { useHeaderVisibility } from "~/hooks/useHeaderVisibility";
 
-interface HeaderContextType {
+type HeaderContextType = {
   isShowing: boolean;
   setIsShowing: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
-export const HeaderContext = createContext<HeaderContextType>({
+const HeaderContext = createContext<HeaderContextType>({
   isShowing: true,
   setIsShowing: () => {},
 });

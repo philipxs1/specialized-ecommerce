@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import type { BikesData } from "~/entities/Bikes";
 import { formatNumber } from "~/helpers/helpers";
 import { BikesQuery } from "~/queries/BikesQuery";
@@ -29,7 +29,13 @@ const fetchBikes = async (): Promise<BikesData> => {
 };
 
 const useBikes = () => {
-  return useQuery<BikesData>({ queryKey: ["bikes"], queryFn: fetchBikes });
+  return useQuery<BikesData>({
+    queryKey: ["bikes"],
+    queryFn: fetchBikes,
+    staleTime: 1000 * 60 * 5,
+
+    placeholderData: (previousData) => previousData,
+  });
 };
 
 export default useBikes;

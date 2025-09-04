@@ -1,4 +1,4 @@
-import HeroComponent from "~/components/HomePage/HeroComponent";
+import HeroComponent from "~/components/home-page/HeroComponent";
 import { HERODATA } from "~/data";
 
 import MainCarousel from "~/components/main-carousel/MainCarousel";

@@ -2,7 +2,7 @@ export const FilterOptionsQuery = `
 query {
   collection(handle: "bikes") {
     title
-    metafield(key: "filter_groups", namespace: "custom") {
+    metafield(key: "filters", namespace: "custom") {
       value
       type
       id
@@ -25,3 +25,13 @@ query GetMetaobjects($ids: [ID!]!) {
   }
 }
 `;
+
+export const filterQuery = `
+query {
+  collection(handle: "bikes") {
+    title
+    metafield(key: "filter_groups", namespace: "custom") {
+      value
+    }
+  }
+}`;

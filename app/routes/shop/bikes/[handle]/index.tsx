@@ -26,7 +26,7 @@ const index = () => {
         </h1>
       </div>
 
-      <section className="max-w-[var(--setmax-width) relative my-0 mr-auto ml-auto flex min-h-lvw w-full border-2 border-black py-4">
+      <section className="max-w-[var(--setmax-width) relative my-0 mr-auto ml-auto flex min-h-lvw w-full py-4">
         <SideBar />
         <ProductGrid bikes={products?.allBikes ?? []} />
       </section>
