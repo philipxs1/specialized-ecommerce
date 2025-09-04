@@ -1,31 +1,25 @@
-import { useContext, useState } from "react";
 import Carousel from "~/components/carousel/Carousel";
 
 import ProductGrid from "~/components/products/ProductGrid";
 import FilterButton from "~/components/sidebar/FilterButton";
 import SideBar from "~/components/sidebar/SideBar";
-import { FilterContext, FilterProvider } from "~/context/FilterProvider";
+import { useFilters } from "~/context/FilterProvider";
 import useBikes from "~/hooks/useBikes";
+
 import useBikespageTiles from "~/hooks/useBikespageTiles";
 import useFilterOptions from "~/hooks/useFilterOptions";
+import useProductsByCollection from "~/hooks/useProductsByCollection";
 
 export default function BikesRoute() {
-  const filterContext = useContext(FilterContext);
-  const activeFilters = filterContext?.activeFilters;
+  const { activeFilters, sortBy } = useFilters();
+
   const { data: tiles, isLoading, isError } = useBikespageTiles();
-  const {
-    data: products,
-    isFetching,
-    isLoading: isLoadingProducts,
-    isError: isProductError,
-  } = useBikes();
+  const { data: products } = useProductsByCollection("bikes");
+
   const { data: filters } = useFilterOptions();
 
   if (isLoading) {
     return <p>Loading collections...</p>;
-  }
-  if (isFetching && products) {
-    return <p>Loading bikes for the first time...</p>;
   }
 
   if (isError || !tiles) return <p>Something went wrong loading collections</p>;
@@ -34,8 +28,7 @@ export default function BikesRoute() {
     <div>
       <div className="mx-6 my-6 flex h-full gap-20">
         <h1 className="text-2xl font-bold">
-          {products?.title}
-          &nbsp;
+          {products?.title} &nbsp;
           <span className="p-2 text-lg font-normal">
             ({products?.allBikes.length})
           </span>

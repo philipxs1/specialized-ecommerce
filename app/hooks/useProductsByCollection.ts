@@ -1,4 +1,5 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useFilters } from "~/context/FilterProvider";
 import type { BikesData } from "~/entities/Bikes";
 import { formatNumber } from "~/helpers/helpers";
 import { BikesQuery } from "~/queries/BikesQuery";
@@ -19,13 +20,16 @@ function getSortBy(sortBy: string) {
   }
 }
 
-const fetchBikes = async (sortBy: string): Promise<BikesData> => {
+const fetchBikes = async (
+  sortBy: string,
+  handle: string,
+): Promise<BikesData> => {
   const { sortKey, reverse } = getSortBy(sortBy);
 
   const response = await axiosInstance.post("", {
     query: SortByQuery,
     variables: {
-      handle: "bikes",
+      handle,
       sortKey,
       reverse,
     },
@@ -53,14 +57,15 @@ const fetchBikes = async (sortBy: string): Promise<BikesData> => {
   };
 };
 
-const useBikes = (sortBy: string) => {
-  return useQuery<BikesData>({
-    queryKey: ["bikes", sortBy],
-    queryFn: () => fetchBikes(sortBy),
+const useProductsByCollection = (handle: string) => {
+  const { sortBy } = useFilters();
+  return useQuery({
+    queryKey: ["bikes", sortBy, handle],
+    queryFn: () => fetchBikes(sortBy, handle),
     staleTime: 1000 * 60 * 5,
 
     placeholderData: (previousData) => previousData,
   });
 };
 
-export default useBikes;
+export default useProductsByCollection;

@@ -14,7 +14,7 @@ const SortByOptions = ({ option, type, label, index }: any) => {
             value={option}
             id={inputID}
             checked={sortBy === option}
-            onChange={(e) => setSortBy(e.target.value)}
+            onChange={() => setSortBy(option)}
           />
         </div>
         <label htmlFor={inputID}>

@@ -3,13 +3,18 @@ import { useParams } from "react-router";
 import ProductGrid from "~/components/products/ProductGrid";
 import SideBar from "~/components/sidebar/SideBar";
 import useCollections from "~/hooks/useCollections";
+import useProductsByCollection from "~/hooks/useProductsByCollection";
 import useProducts from "~/hooks/useProductsByHandle";
 
 const index = () => {
   const { handle } = useParams<{ handle: string }>();
   if (!handle) return <div>No collection selected</div>;
 
-  const { data: products, isLoading, isError } = useProducts(handle);
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useProductsByCollection(handle!);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading collections</div>;

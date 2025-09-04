@@ -4,7 +4,7 @@ import FilterCard from "./FilterCard";
 import SortByCard from "./SortByCard";
 
 type SideBarProps = {
-  filters: Filters[];
+  filters?: Filters[];
 };
 
 const SideBar = ({ filters }: SideBarProps) => {
