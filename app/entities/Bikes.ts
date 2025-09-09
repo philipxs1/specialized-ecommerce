@@ -8,4 +8,6 @@ export interface Product {
   price: number;
   currencyCode: string;
   image: string;
+  id: string;
+  handle: string;
 }

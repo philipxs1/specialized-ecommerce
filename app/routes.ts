@@ -9,6 +9,7 @@ import {
 export default [
   layout("routes/Layout.tsx", [
     index("routes/home.tsx"),
+    route(":productHandle/p/:productId", "routes/[productId]/index.tsx"),
 
     ...prefix("shop", [
       index("routes/shop/index.tsx"),

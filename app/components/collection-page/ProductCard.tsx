@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router";
 import type { Product } from "~/entities/Bikes";
 
-const ProductCard = ({ title, image, price }: Product) => {
+const ProductCard = ({ title, image, price, id, handle }: Product) => {
   return (
     <li>
       <article>
         <div className="relative flex h-full flex-col">
-          <a href="">
+          <Link to={`/${handle}/p/${id}`}>
             <figure className="bg-white-gray relative flex aspect-[1/1] items-center justify-center overflow-hidden rounded-t-lg">
               <div>
                 <img
@@ -16,7 +17,7 @@ const ProductCard = ({ title, image, price }: Product) => {
                 />
               </div>
             </figure>
-          </a>
+          </Link>
           <div className="product-card-border grow rounded-b-lg px-5 pb-3">
             <div className="pt-6">
               <h2 className="block text-2xl font-bold">{title}</h2>

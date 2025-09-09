@@ -11,7 +11,7 @@ import CarouselTile from "./CarouselTile";
 import PromoTile from "./PromoTile";
 
 export interface CarouselProps {
-  tiles: Tile[];
+  tiles?: Tile[];
   promo?: Tile[];
 }
 

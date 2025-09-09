@@ -17,7 +17,6 @@ const fetchHomepageTiles = async (): Promise<{ homepage: Tile[] }> => {
 
   const response = await axiosInstance.post("", { query });
   const data = response.data.data;
-  console.log(data);
 
   const mapTiles = (edges: { node: MetaObjectNode }[]): Tile[] =>
     edges.map((edge) => {

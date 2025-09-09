@@ -75,3 +75,39 @@ body {
 .sidebar-scrollbar {
   scrollbar-width: none;
 }
+
+.product-grid {
+  display: grid;
+  grid-template-areas:
+    "gallery side-panel"
+    "content side-panel";
+  grid-template-columns: calc(100% - 500px) 1fr;
+}
+
+.thumbs-swiper .thumb-active {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+/* product descriptions */
+
+.product-description ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+}
+
+.product-description ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+}
+
+.product-description li {
+  margin-bottom: 0.5rem;
+}
+
+.product-description h2,
+.product-description h3 {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}

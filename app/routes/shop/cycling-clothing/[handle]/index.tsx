@@ -1,18 +1,23 @@
 import { useParams } from "react-router";
-import useCollections from "~/hooks/useCollections";
+import CollectionLayout from "~/components/layouts/CollectionLayout";
+import useCollection from "~/hooks/useCollection";
 
 const index = () => {
-  const { handle } = useParams();
-  const { data: collections, isLoading, isError } = useCollections();
+  const { handle } = useParams<{ handle: string }>();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading collections</div>;
+  if (!handle) return <div>No collection selected</div>;
 
-  const collection = collections?.find((c) => c.handle === handle);
+  const { data, isLoading, isError } = useCollection(handle);
+  console.log(data);
 
-  if (!collection) return <div>Collection not found</div>;
-
-  return <h1>{collection.title}</h1>;
+  return (
+    <CollectionLayout
+      title={data?.title}
+      products={data?.products ?? []}
+      isLoading={isLoading}
+      isError={isError}
+    />
+  );
 };
 
 export default index;
