@@ -1,12 +1,18 @@
+import { useEffect, useState } from "react";
+import { useCart } from "~/context/ShoppingCartProvider";
+import { useCartStore } from "~/context/useCartStore";
 import type { Navigation } from "~/entities/Navigation";
 
 import Icon from "~/ui/Icon/Icon";
+import CartBadge from "./CartBadge";
 
 interface HeaderProps {
   navigation: Navigation;
 }
 
 const Header = ({ navigation }: HeaderProps) => {
+  const totalQuantity = useCartStore((state) => state.totalQuantity());
+
   return (
     <header
       id="header-wrapper"
@@ -87,8 +93,11 @@ const Header = ({ navigation }: HeaderProps) => {
             <div>
               <Icon id="search" />
             </div>
-            <a href="">
-              <Icon id="shopping-cart" />
+            <a href="/cart">
+              <button className="relative cursor-pointer">
+                <Icon id="shopping-cart" />
+                <CartBadge count={totalQuantity} />
+              </button>
             </a>
             <a href="">
               <Icon id="user" />

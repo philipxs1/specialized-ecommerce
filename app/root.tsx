@@ -67,8 +67,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  const { navigation, footerMenusArray } = useLoaderData();
+export default function App({ loaderData }: Route.ComponentProps) {
+  const { navigation, footerMenusArray } = loaderData;
   return (
     <HeaderProvider>
       <FilterProvider>

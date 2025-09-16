@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useSearchParams } from "react-router";
 import { useFilters } from "~/context/FilterProvider";
-import { formatNumber } from "~/helpers/helpers";
+
 import { CollectionQuery } from "~/queries/CollectionQuery";
 import { METAOBJECTS_QUERY } from "~/queries/MetaFieldQuery";
 import axiosInstance from "~/services/api-client";
@@ -38,7 +38,7 @@ const fetchCollection = async (handle: string, sortBy: string) => {
       id: node.id.split("/").pop(),
       handle: node.handle,
       title: node.title,
-      price: formatNumber(node.priceRange.minVariantPrice.amount),
+      price: Number(node.priceRange.minVariantPrice.amount),
       currency: node.priceRange.minVariantPrice.currencyCode,
       image: node.images.edges[0]?.node.url || "",
       altText: node.images.edges[0]?.node.altText || "",
@@ -86,6 +86,7 @@ export async function fetchCarouselTiles(ids: string[]) {
       title: fields.title ?? "",
       subtitle: fields.subtitle ?? "",
       link: fields.link ?? "#",
+      promo: fields.promo === "true",
       image: fields.image?.url ?? "",
       alt: fields.image?.alt ?? "",
     };

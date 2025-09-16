@@ -1,0 +1,30 @@
+import React from "react";
+import { useNavigate } from "react-router";
+import LogoSmall from "~/ui/LogoSmall";
+
+const CheckoutHeader = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="mx-auto w-full max-w-[1200px] p-6">
+      {" "}
+      <div className="flex justify-between">
+        <div className="flex items-center justify-center gap-10">
+          <a href="/">
+            <LogoSmall color="black" />
+          </a>
+          <h4 className="font-medium">Secure Checkout</h4>
+        </div>
+        <div>
+          <button
+            onClick={() => navigate("/cart")}
+            className="cursor-pointer rounded-sm bg-gray-800 px-4 py-2 text-xs text-white hover:bg-gray-900"
+          >
+            Edit Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CheckoutHeader;

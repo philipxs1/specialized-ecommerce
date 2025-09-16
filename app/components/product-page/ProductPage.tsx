@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import ImageGallery from "./ImageGallery";
 import ProductDetails from "./ProductDetails";
+import { useCart } from "~/context/ShoppingCartProvider";
+import { useCartStore } from "~/context/useCartStore";
+import { formatPrice } from "~/helpers/helpers";
 
 type Variant = {
   id: string;
@@ -10,14 +13,17 @@ type Variant = {
 };
 
 interface ProductPageProps {
+  id: string;
   title: string;
   description: string;
   descriptionHtml: string;
   price: number;
   variants?: Variant[];
+  defaultVariant: Variant;
 }
 
 const ProductPage = ({
+  id,
   title,
   description,
   descriptionHtml,
@@ -25,6 +31,7 @@ const ProductPage = ({
   variants,
 }: ProductPageProps) => {
   const [selectedId, setSelectedId] = useState(0);
+  const addItem = useCartStore((state) => state.addItem);
 
   if (!variants || variants.length === 0) {
     return <p>loading product</p>;
@@ -43,10 +50,10 @@ const ProductPage = ({
               <h1 className="text-2xl font-bold">{title}</h1>
             </div>
             <div className="">
-              <h5 className="text-2xl font-normal">${price}</h5>
+              <h5 className="text-2xl font-normal">{formatPrice(price)}</h5>
             </div>
             <div>
-              <p className="line-clamp-1">{description}</p>
+              <p className="line-clamp-2">{description}</p>
               <button className="cursor-pointer underline">Read More...</button>
             </div>
           </div>
@@ -56,15 +63,30 @@ const ProductPage = ({
               <button
                 key={variant.id}
                 onClick={() => setSelectedId(index)}
-                className={`rounded-lg border px-4 py-2 transition ${
+                className={`hover:bg-black-lighter rounded-lg border px-4 py-2 transition-colors ${
                   selectedVariant.id === variant.id
-                    ? "bg-black text-white"
+                    ? "bg-black-darker text-white"
                     : "bg-gray-100 hover:bg-gray-200"
                 }`}
               >
                 {variant.title}
               </button>
             ))}
+          </div>
+          <div className="py-8">
+            <button
+              onClick={() =>
+                addItem({
+                  id: selectedVariant.id,
+                  title,
+                  price: Number(price),
+                  image: selectedVariant.images?.[0],
+                })
+              }
+              className="bg-black-darker text-white-headers hover:bg-black-lighter w-full cursor-pointer rounded-sm px-10 py-4 transition-colors"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

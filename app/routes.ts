@@ -7,9 +7,10 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
-  layout("routes/Layout.tsx", [
+  layout("routes/AppLayout.tsx", [
     index("routes/home.tsx"),
     route(":productHandle/p/:productId", "routes/[productId]/index.tsx"),
+    route("cart", "routes/cart/index.tsx"),
 
     ...prefix("shop", [
       index("routes/shop/index.tsx"),

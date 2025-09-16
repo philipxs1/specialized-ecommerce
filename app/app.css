@@ -13,16 +13,22 @@
   --color-gray-primary: hsl(0 0 95%);
   --color-white-headers: hsl(0 0 97.3%);
   --color-gray-border: hsl(0 0 90%);
-  --color-black-lighter: hsl(0 0 14.5%);
+  --color-black-darker: hsl(0 0 10.5%);
+  --color-black-lighter: hsl(0 0 20%);
+  --color-black-disbaled: hsl(0 0 89.9%);
   --color-white-gray: hsl(0 0 95%);
   --color-nav-hover: hsl(0 0 58.4%);
+  --color-form-border: rgb(220, 220, 220);
+  --color-form-border-focus: rgb(215, 215, 215);
   --color-footer-headers: hsl(0 0 58.4%);
   --color-border-bottom: hsl(0 0 23.9%);
   --color-modal-bg: hsl(0 0% 0% / 0.5);
+  --color-form-error: rgb(155, 34, 25);
   --p-global-page: 6;
   --border-test: border-2 border-red;
 
   --setmax-width: 1920px;
+  --grid-columns-set: calc(100% - 500px) 1fr;
 }
 
 html,
@@ -81,7 +87,7 @@ body {
   grid-template-areas:
     "gallery side-panel"
     "content side-panel";
-  grid-template-columns: calc(100% - 500px) 1fr;
+  grid-template-columns: var(--grid-columns-set);
 }
 
 .thumbs-swiper .thumb-active {
@@ -110,4 +116,68 @@ body {
   font-weight: bold;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+}
+
+.form-validation-error {
+  color: var(--color-form-error);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.form-transparent {
+  background: linear-gradient(
+    transparent 0%,
+    transparent 12px,
+    rgb(255, 255, 255) 12px,
+    rgb(242, 242, 242) 100%
+  );
+}
+
+.floating-input,
+.floating-select {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-border);
+  background: transparent;
+  padding: 16px 10px 10px 10px;
+  font-size: 0.875rem;
+}
+
+.floating-input:focus,
+.floating-select:focus {
+  border-color: #505050;
+  outline: none;
+}
+
+.floating-form {
+  position: relative;
+}
+
+.floating-form label {
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  font-size: 0.875rem;
+  color: #666;
+  background-color: white;
+  padding: 0 4px;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+.floating-input:focus + label,
+.floating-input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 8px;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.floating-select:focus + label,
+.floating-select:valid + label {
+  top: -8px;
+  left: 8px;
+  font-size: 0.75rem;
+  color: #333;
 }

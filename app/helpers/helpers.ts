@@ -1,9 +1,10 @@
-export const formatNumber = (str: string) => {
-  const num = Number(str);
-  return new Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(num);
+const formatter = new Intl.NumberFormat("en-AU", {
+  style: "currency",
+  currency: "AUD",
+});
+
+export const formatPrice = (price: number) => {
+  return formatter.format(price);
 };
 
 export const range = (

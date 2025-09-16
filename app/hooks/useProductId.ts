@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { ProductQuery } from "~/queries/ProductQuery";
 import axiosInstance from "~/services/api-client";
 
@@ -14,11 +15,13 @@ const fetchProductById = async (id: string) => {
   const variants = mapVariantsWithImages(product.variants.edges);
 
   return {
+    id: product.id,
     title: product.title,
     description: product.description,
     descriptionHtml: product.descriptionHtml,
-    price: product.priceRange.maxVariantPrice.amount,
+    price: Number(product.priceRange.maxVariantPrice.amount),
     variants: variants,
+    defaultVariant: variants[0] || null,
   };
 };
 

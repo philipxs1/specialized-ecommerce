@@ -2,6 +2,7 @@ export interface Tile {
   title: string;
   link: string;
   image: string;
+  promo: string;
 }
 
 export interface MetaField {

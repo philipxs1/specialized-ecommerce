@@ -4,7 +4,6 @@ import useCollection from "~/hooks/useCollection";
 
 export default function BikesRoute() {
   const { data, isLoading, isError } = useCollection("bikes");
-  console.log(data);
 
   return (
     <CollectionLayout

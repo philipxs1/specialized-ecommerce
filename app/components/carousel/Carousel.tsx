@@ -46,19 +46,20 @@ const Carousel: React.FC<CarouselProps> = ({ tiles, promo }) => {
             setShowNext(swiper.translate > swiper.maxTranslate());
           }}
         >
-          {tiles?.map((tile) => (
-            <SwiperSlide key={tile.title} style={{ width: "260px" }}>
-              <CarouselTile {...tile} />
-            </SwiperSlide>
-          ))}
-          {promo?.map((tile) => (
-            <SwiperSlide
-              key={`promo-${tile.title}`}
-              style={{ width: "260px", height: "auto" }}
-            >
-              <PromoTile {...tile} />
-            </SwiperSlide>
-          ))}
+          {tiles?.map((tile) => {
+            return (
+              <SwiperSlide
+                key={tile.title}
+                style={{ width: "260px", height: "auto" }}
+              >
+                {tile.promo ? (
+                  <PromoTile {...tile} />
+                ) : (
+                  <CarouselTile {...tile} />
+                )}
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
         <div className="">
           <div className="absolute top-10 left-[60px] z-1">
