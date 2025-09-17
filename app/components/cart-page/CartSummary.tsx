@@ -15,8 +15,9 @@ const CartSummary = () => {
         <h1 className="text-2xl font-bold">Order summmary</h1>
       </div>
       <div className="pb-2">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <SummaryItem
+            key={index}
             item={{ ...item, image: item.image ?? "/placeholder.png" }}
           />
         ))}

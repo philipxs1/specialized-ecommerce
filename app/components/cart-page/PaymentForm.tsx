@@ -15,7 +15,7 @@ export default function PaymentForm({ totalAmount }: PaymentFormProps) {
   useEffect(() => {
     const createPaymentIntent = async () => {
       try {
-        const res = await fetch("/functions/create-payment-intent", {
+        const res = await fetch("/api/create-payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ amount: totalAmount }),

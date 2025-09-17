@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 
 import EditCart from "~/components/cart-page/EditCart";
@@ -44,6 +44,9 @@ const index = () => {
   const step = Number(searchParams.get("step")) || 0;
 
   const setStep = (n: number) => setSearchParams({ step: String(n) });
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   if (items.length == 0 && step === 0) {
     return <EmptyCart />;
@@ -136,7 +139,7 @@ const index = () => {
 
         {/* Right column: order summary */}
         <div className="rounded-sm md:ml-8 md:w-[55%]">
-          <CartSummary />
+          {mounted && <CartSummary />}
         </div>
       </div>
     </div>
