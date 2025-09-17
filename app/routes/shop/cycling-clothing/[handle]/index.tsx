@@ -8,7 +8,6 @@ const index = () => {
   if (!handle) return <div>No collection selected</div>;
 
   const { data, isLoading, isError } = useCollection(handle);
-  console.log(data);
 
   return (
     <CollectionLayout

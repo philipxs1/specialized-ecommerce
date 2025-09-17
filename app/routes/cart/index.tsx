@@ -40,8 +40,6 @@ const index = () => {
     shipping?: ShippingInfo;
   }>({});
 
-  console.log(items);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const step = Number(searchParams.get("step")) || 0;
 
