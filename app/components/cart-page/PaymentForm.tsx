@@ -7,7 +7,7 @@ type PaymentFormProps = {
   totalAmount: number;
 };
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY!);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY!);
 
 export default function PaymentForm({ totalAmount }: PaymentFormProps) {
   const [clientSecret, setClientSecret] = useState("");
