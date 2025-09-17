@@ -7,21 +7,20 @@ type PaymentFormProps = {
   totalAmount: number;
 };
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY!);
 
 export default function PaymentForm({ totalAmount }: PaymentFormProps) {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    // fetch from backend
-    fetch("http://localhost:3001/create-payment-intent", {
+    fetch("/api/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: totalAmount }), // e.g. $20 cart total
+      body: JSON.stringify({ amount: totalAmount }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
-  }, []);
+  }, [totalAmount]);
 
   if (!clientSecret) return <p>Loading payment form...</p>;
 
