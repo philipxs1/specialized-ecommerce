@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import ImageGallery from "./ImageGallery";
 import ProductDetails from "./ProductDetails";
-import { useCart } from "~/context/ShoppingCartProvider";
+
 import { useCartStore } from "~/context/useCartStore";
 import { formatPrice } from "~/helpers/helpers";
 
 type Variant = {
   id: string;
-  title: string;
+  colour: string;
   images: string[];
 };
 
@@ -69,7 +69,7 @@ const ProductPage = ({
                     : "bg-gray-100 hover:bg-gray-200"
                 }`}
               >
-                {variant.title}
+                {variant.colour}
               </button>
             ))}
           </div>
@@ -81,6 +81,7 @@ const ProductPage = ({
                   title,
                   price: Number(price),
                   image: selectedVariant.images?.[0],
+                  colour: selectedVariant.colour,
                 })
               }
               className="bg-black-darker text-white-headers hover:bg-black-lighter w-full cursor-pointer rounded-sm px-10 py-4 transition-colors"

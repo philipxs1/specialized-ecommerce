@@ -18,6 +18,9 @@ const ShippingSummary: React.FC<ShippingSummaryProps> = ({ data, onEdit }) => {
     state,
     postCode,
   } = data;
+
+  const hasData = Object.values(data).some((v) => v && v.trim() !== "");
+
   return (
     <div className="pb-4">
       <div className="border-black-lighter flex items-center justify-between border-t-1 py-4">
@@ -27,17 +30,19 @@ const ShippingSummary: React.FC<ShippingSummaryProps> = ({ data, onEdit }) => {
         </button>
       </div>
 
-      <div className="flex items-center justify-center rounded-md border-2 border-black py-4">
-        <div>
-          <p>
-            {firstName} {lastName}
-          </p>
-          <p>{phoneNumber}</p>
-          <p>
-            {streetAddress}, {unitNumber} {town}, {state}, {postCode}{" "}
-          </p>
+      {hasData && (
+        <div className="flex items-center justify-center rounded-md border-2 border-black py-4">
+          <div>
+            <p>
+              {firstName} {lastName}
+            </p>
+            <p>{phoneNumber}</p>
+            <p>
+              {streetAddress}, {unitNumber} {town}, {state}, {postCode}{" "}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

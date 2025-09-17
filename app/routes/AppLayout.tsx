@@ -5,6 +5,7 @@ import {
   useOutletContext,
   useSearchParams,
 } from "react-router";
+import CompletedHeader from "~/components/finalized-order-page/CompletedHeader";
 import Footer from "~/components/footer/Footer";
 import CheckoutHeader from "~/components/header/CheckoutHeader";
 import Header from "~/components/header/Header";
@@ -23,11 +24,19 @@ export default function AppLayout() {
   const [searchParams] = useSearchParams();
 
   const isCheckout = location.pathname === "/cart" && searchParams.has("step");
+  const isCompleted = location.pathname === "/completion";
 
   return (
     <div className="relative mx-auto flex h-full max-w-[2600px] flex-col">
       <SuperHeader />
-      {isCheckout ? <CheckoutHeader /> : <Header navigation={navigation} />}
+      {isCheckout ? (
+        <CheckoutHeader />
+      ) : isCompleted ? (
+        <CompletedHeader />
+      ) : (
+        <Header navigation={navigation} />
+      )}
+
       <main className="p-full-page flex-1">
         <Outlet />
       </main>

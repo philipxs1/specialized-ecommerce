@@ -12,31 +12,35 @@ import CustomerSummary from "~/components/cart-page/CustomerSummary";
 import ShippingAddressForm from "~/components/cart-page/ShippingForm";
 import ShippingSummary from "~/components/cart-page/ShippingSummary";
 import CartSummary from "~/components/cart-page/CartSummary";
+import PaymentForm from "~/components/cart-page/PaymentForm";
 
 export interface CustomerInfo {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phoneNumber?: string;
 }
 export interface ShippingInfo {
-  country: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  streetAddress: string;
-  unitNumber: string;
-  town: string;
-  state: string;
-  postCode: string;
+  country?: string;
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: string;
+  streetAddress?: string;
+  unitNumber?: string;
+  town?: string;
+  state?: string;
+  postCode?: string;
 }
 
 const index = () => {
   const items = useCartStore((state) => state.items);
+  const totalPrice = useCartStore((state) => state.totalPrice);
   const [data, setData] = useState<{
     customer?: CustomerInfo;
     shipping?: ShippingInfo;
   }>({});
+
+  console.log(items);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const step = Number(searchParams.get("step")) || 0;
@@ -57,6 +61,7 @@ const index = () => {
         {/* Left column: stepper */}
         <div className="w-full md:mr-8 md:w-[45%]">
           {/* Step 1 */}
+
           {step === 1 ? (
             <StepWrapper
               title="Tell us who's placing the order"
@@ -72,21 +77,22 @@ const index = () => {
                 }}
               />
             </StepWrapper>
-          ) : step > 1 ? (
-            <CustomerSummary
-              data={{
-                firstName: data.customer?.firstName ?? "",
-                lastName: data.customer?.lastName ?? "",
-                email: data.customer?.email ?? "",
-                phoneNumber: data.customer?.phoneNumber ?? "",
-              }}
-              onEdit={() => setStep(1)}
-            />
-          ) : null}
-
+          ) : (
+            step > 1 && (
+              <CustomerSummary
+                data={{
+                  firstName: data.customer?.firstName,
+                  lastName: data.customer?.lastName,
+                  email: data.customer?.email,
+                  phoneNumber: data.customer?.phoneNumber,
+                }}
+                onEdit={() => setStep(1)}
+              />
+            )
+          )}
           {/* Step 2 */}
 
-          {step === 2 ? (
+          {step === 2 || step < 2 ? (
             <StepWrapper
               title="Confirm how you would like to receive your order"
               stepNumber={2}
@@ -100,33 +106,38 @@ const index = () => {
                 }}
               />
             </StepWrapper>
-          ) : step > 2 ? (
-            <ShippingSummary
-              data={{
-                country: data.shipping?.country ?? "",
-                firstName: data.shipping?.firstName ?? "",
-                lastName: data.shipping?.lastName ?? "",
-                phoneNumber: data.shipping?.phoneNumber ?? "",
-                streetAddress: data.shipping?.streetAddress ?? "",
-                unitNumber: data.shipping?.unitNumber ?? "",
-                town: data.shipping?.town ?? "",
-                postCode: data.shipping?.postCode ?? "",
-                state: data.shipping?.state ?? "",
-              }}
-              onEdit={() => setStep(2)}
-            />
-          ) : null}
+          ) : (
+            step > 2 && (
+              <ShippingSummary
+                data={{
+                  country: data.shipping?.country,
+                  firstName: data.shipping?.firstName,
+                  lastName: data.shipping?.lastName,
+                  phoneNumber: data.shipping?.phoneNumber,
+                  streetAddress: data.shipping?.streetAddress,
+                  unitNumber: data.shipping?.unitNumber,
+                  town: data.shipping?.town,
+                  postCode: data.shipping?.postCode,
+                  state: data.shipping?.state,
+                }}
+                onEdit={() => setStep(2)}
+              />
+            )
+          )}
 
           {/* Step 3 */}
+
           <StepWrapper
             title="How would you like to pay?"
             stepNumber={3}
             currentStep={step}
-          ></StepWrapper>
+          >
+            <PaymentForm totalAmount={totalPrice()} />
+          </StepWrapper>
         </div>
 
         {/* Right column: order summary */}
-        <div className="bg-white-gray h-full w-full rounded-sm md:ml-8 md:w-[55%]">
+        <div className="rounded-sm md:ml-8 md:w-[55%]">
           <CartSummary />
         </div>
       </div>

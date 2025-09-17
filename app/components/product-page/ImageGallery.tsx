@@ -7,7 +7,7 @@ import "swiper/css";
 
 interface Variant {
   images: string[];
-  title: string;
+  colour: string;
 }
 
 interface ImageGalleryProps {
@@ -69,7 +69,7 @@ const ImageGallery = ({ selectedVariant }: ImageGalleryProps) => {
                   >
                     <img
                       src={url}
-                      alt={`${selectedVariant.title}-${i}`}
+                      alt={`${selectedVariant.colour}-${i}`}
                       height={90}
                       width={160}
                       className="aspect-[16/9] h-full w-full rounded-lg shadow"

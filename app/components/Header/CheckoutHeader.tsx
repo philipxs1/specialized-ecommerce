@@ -17,7 +17,7 @@ const CheckoutHeader = () => {
         <div>
           <button
             onClick={() => navigate("/cart")}
-            className="cursor-pointer rounded-sm bg-gray-800 px-4 py-2 text-xs text-white hover:bg-gray-900"
+            className="bg-black-lighter cursor-pointer rounded-sm px-4 py-2 text-xs text-white hover:bg-black"
           >
             Edit Cart
           </button>

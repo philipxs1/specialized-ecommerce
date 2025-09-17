@@ -11,7 +11,7 @@ const fetchProductById = async (id: string) => {
   });
 
   const product = response.data.data.product;
-  console.log(product);
+
   const variants = mapVariantsWithImages(product.variants.edges);
 
   return {
@@ -52,7 +52,7 @@ const mapVariantsWithImages = (variantsData: any[]) => {
 
     return {
       id: variant.id,
-      title: variant.title,
+      colour: variant.title,
       images,
     };
   });

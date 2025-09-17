@@ -2,6 +2,7 @@ export interface Product {
   title: string;
   id: string;
   description: string;
+  colour: string;
   images: ProductImage[];
 }
 

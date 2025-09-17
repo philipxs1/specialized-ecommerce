@@ -11,6 +11,7 @@ export default [
     index("routes/home.tsx"),
     route(":productHandle/p/:productId", "routes/[productId]/index.tsx"),
     route("cart", "routes/cart/index.tsx"),
+    route("completion", "routes/completion/index.tsx"),
 
     ...prefix("shop", [
       index("routes/shop/index.tsx"),

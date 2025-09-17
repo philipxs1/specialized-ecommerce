@@ -1,17 +1,10 @@
 import React from "react";
 import { useCartStore } from "~/context/useCartStore";
+import type { CartItem } from "~/entities/CartItem";
 import { formatPrice } from "~/helpers/helpers";
 import Icon from "~/ui/Icon/Icon";
 
-type CartItemProps = {
-  title: string;
-  image: string;
-  price: number;
-  id: string;
-  quantity: number;
-};
-
-const CartItem = ({ title, image, price, id, quantity }: CartItemProps) => {
+const CartItem = ({ title, image, price, id, quantity }: CartItem) => {
   const addItem = useCartStore((state) => state.addItem);
   const removeItem = useCartStore((state) => state.removeItem);
   const increase = useCartStore((state) => state.increaseQuantity);

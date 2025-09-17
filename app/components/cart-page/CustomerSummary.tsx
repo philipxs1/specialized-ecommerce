@@ -8,8 +8,10 @@ type CustomerSummaryProps = {
 
 const CustomerSummary: React.FC<CustomerSummaryProps> = ({ data, onEdit }) => {
   const { firstName, lastName, phoneNumber, email } = data;
+
+  const hasData = Object.values(data).some((v) => v && v.trim() !== "");
   return (
-    <div>
+    <div className="pb-4">
       <div className="border-black-lighter flex items-center justify-between border-t-1 py-4">
         <h4 className="font-bold">Your Information</h4>
         <button onClick={onEdit} className="cursor-pointer font-bold underline">
@@ -17,13 +19,15 @@ const CustomerSummary: React.FC<CustomerSummaryProps> = ({ data, onEdit }) => {
         </button>
       </div>
 
-      <div className="py-5">
-        <p>
-          {firstName} {lastName}
-        </p>
-        <p>{phoneNumber}</p>
-        <p>{email}</p>
-      </div>
+      {hasData && (
+        <div className="py-5">
+          <p>
+            {firstName} {lastName}
+          </p>
+          <p>{phoneNumber}</p>
+          <p>{email}</p>
+        </div>
+      )}
     </div>
   );
 };
