@@ -7,7 +7,8 @@ import {
 import CompletedHeader from "~/components/finalized-order-page/CompletedHeader";
 import Footer from "~/components/footer/Footer";
 import CheckoutHeader from "~/components/header/CheckoutHeader";
-import Header from "~/components/header/Header";
+import MainHeader from "~/components/header/MainHeader";
+
 import SuperHeader from "~/components/super-header/SuperHeader";
 
 type OutletContextType = {
@@ -33,7 +34,7 @@ export default function AppLayout() {
       ) : isCompleted ? (
         <CompletedHeader />
       ) : (
-        <Header navigation={navigation} />
+        <MainHeader navigation={navigation} />
       )}
 
       <main className="p-full-page flex-1">

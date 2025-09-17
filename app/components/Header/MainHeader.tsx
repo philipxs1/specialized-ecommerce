@@ -10,7 +10,7 @@ interface HeaderProps {
   navigation: Navigation;
 }
 
-const Header = ({ navigation }: HeaderProps) => {
+const MainHeader = ({ navigation }: HeaderProps) => {
   const totalQuantity = useCartStore((state) => state.totalQuantity());
 
   return (
@@ -112,4 +112,4 @@ const Header = ({ navigation }: HeaderProps) => {
   );
 };
 
-export default Header;
+export default MainHeader;
