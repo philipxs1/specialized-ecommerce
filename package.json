@@ -25,6 +25,7 @@
     "react-feather": "^2.0.10",
     "react-hook-form": "^7.62.0",
     "react-router": "^7.5.3",
+    "stripe": "^18.5.0",
     "swiper": "^11.2.10",
     "zustand": "^5.0.8"
   },
@@ -35,6 +36,7 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@types/stripe": "^8.0.416",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",
     "tailwindcss": "^4.1.4",
