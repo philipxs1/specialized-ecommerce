@@ -1,16 +1,17 @@
-import type { Route } from ".react-router/types/app/routes/shop/bikes/+types";
+import CollectionLayout from "~/components/layouts/CollectionLayout";
 
-export async function loader() {
-  return {
-    message: "Phil",
-  };
-}
+import useCollection from "~/hooks/useCollection";
 
-export default function BikesRoute({ loaderData }: Route.ComponentProps) {
+export default function BikesRoute() {
+  const { data, isLoading, isError } = useCollection("bikes");
+
   return (
-    <div>
-      Bikes
-      <div>{JSON.stringify(loaderData, null, 2)}</div>
-    </div>
+    <CollectionLayout
+      title={data?.title ?? "Bikes"}
+      products={data?.products ?? []}
+      isLoading={isLoading}
+      isError={isError}
+      tiles={data?.tiles ?? []}
+    />
   );
 }

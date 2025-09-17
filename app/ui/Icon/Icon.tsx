@@ -5,8 +5,21 @@ import {
   Bookmark,
   Home,
   X,
+  Menu,
+  ArrowRight,
+  ChevronRight,
+  ChevronLeft,
+  ChevronDown,
+  ChevronUp,
+  Instagram,
+  Facebook,
+  Youtube,
+  Plus,
+  Minus,
   type IconProps as FeatherIconProps,
+  ArrowLeft,
 } from "react-feather";
+
 import type { ComponentType } from "react";
 
 type IconId =
@@ -15,7 +28,19 @@ type IconId =
   | "book-mark"
   | "shopping-cart"
   | "home"
-  | "close";
+  | "menu"
+  | "close"
+  | "arrow-right"
+  | "arrow-left"
+  | "chevron-right"
+  | "chevron-left"
+  | "chevron-down"
+  | "chevron-up"
+  | "instagram"
+  | "youtube"
+  | "facebook"
+  | "plus"
+  | "minus";
 
 const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   search: Search,
@@ -24,6 +49,18 @@ const icons: Record<IconId, ComponentType<FeatherIconProps>> = {
   "shopping-cart": ShoppingCart,
   home: Home,
   close: X,
+  menu: Menu,
+  "arrow-right": ArrowRight,
+  "arrow-left": ArrowLeft,
+  "chevron-right": ChevronRight,
+  "chevron-left": ChevronLeft,
+  "chevron-down": ChevronDown,
+  "chevron-up": ChevronUp,
+  instagram: Instagram,
+  facebook: Facebook,
+  youtube: Youtube,
+  plus: Plus,
+  minus: Minus,
 };
 
 type IconProps = {
@@ -37,7 +74,7 @@ type IconProps = {
 
 const Icon = ({
   id,
-  size = 24,
+  size = 16,
   color = "currentColor",
   strokeWidth = 2,
   fill = "none",
@@ -52,7 +89,7 @@ const Icon = ({
   }
 
   return (
-    <div className={`inline-block ${className}`} {...delegated}>
+    <div className={`${className}`} {...delegated}>
       <Component
         size={size}
         color={color}

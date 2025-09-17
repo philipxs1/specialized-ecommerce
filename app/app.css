@@ -11,84 +11,25 @@
 
   --color-primary: hsl(0 0 100%);
   --color-gray-primary: hsl(0 0 95%);
+  --color-white-headers: hsl(0 0 97.3%);
   --color-gray-border: hsl(0 0 90%);
-  --color-black-super-header: hsl(0 0 14.5%);
+  --color-black-darker: hsl(0 0 10.5%);
+  --color-black-lighter: hsl(0 0 20%);
+  --color-black-disbaled: hsl(0 0 89.9%);
+  --color-white-gray: hsl(0 0 95%);
   --color-nav-hover: hsl(0 0 58.4%);
+  --color-form-border: rgb(220, 220, 220);
+  --color-form-border-focus: rgb(215, 215, 215);
+  --color-footer-headers: hsl(0 0 58.4%);
+  --color-border-bottom: hsl(0 0 23.9%);
   --color-modal-bg: hsl(0 0% 0% / 0.5);
-
+  --color-form-error: rgb(155, 34, 25);
+  --p-global-page: 6;
   --border-test: border-2 border-red;
-}
 
-/*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
-*/
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  --setmax-width: 1920px;
+  --grid-columns-set: calc(100% - 500px) 1fr;
 }
-
-* {
-  margin: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
-}
-
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-#root,
-#__next {
-  isolation: isolate;
-}
-
-/* end of reset */
 
 html,
 body {
@@ -96,6 +37,147 @@ body {
   font-family: var(--font-display);
 }
 
-.custom-border {
+.my-border {
   @apply border-2 border-red-500;
+}
+
+.custom-prev.swiper-button-disabled,
+.custom-next.swiper-button-disabled {
+  color: #d1d5db;
+  cursor: revert;
+  opacity: 0.5;
+}
+
+.last-slide-image {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.product-card-border {
+  border-left: 1px solid var(--color-white-gray);
+  border-right: 1px solid var(--color-white-gray);
+  border-bottom: 1px solid var(--color-white-gray);
+}
+
+.background-gradient {
+  background: linear-gradient(
+    181.63deg,
+    rgba(0, 0, 0, 0) 21.69%,
+    rgba(0, 0, 0, 0.7) 93.89%
+  );
+}
+
+.tile-transform {
+  transition: 250ms ease-in-out;
+  transform-origin: center top;
+  will-change: transform;
+}
+
+.tile-transform:hover {
+  transform: scale(1.05);
+}
+
+.sidebar-scrollbar {
+  scrollbar-width: none;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-areas:
+    "gallery side-panel"
+    "content side-panel";
+  grid-template-columns: var(--grid-columns-set);
+}
+
+.thumbs-swiper .thumb-active {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+/* product descriptions */
+
+.product-description ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+}
+
+.product-description ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+}
+
+.product-description li {
+  margin-bottom: 0.5rem;
+}
+
+.product-description h2,
+.product-description h3 {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-validation-error {
+  color: var(--color-form-error);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.form-transparent {
+  background: linear-gradient(
+    transparent 0%,
+    transparent 12px,
+    rgb(255, 255, 255) 12px,
+    rgb(242, 242, 242) 100%
+  );
+}
+
+.floating-input,
+.floating-select {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-border);
+  background: transparent;
+  padding: 16px 10px 10px 10px;
+  font-size: 0.875rem;
+}
+
+.floating-input:focus,
+.floating-select:focus {
+  border-color: #505050;
+  outline: none;
+}
+
+.floating-form {
+  position: relative;
+}
+
+.floating-form label {
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  font-size: 0.875rem;
+  color: #666;
+  background-color: white;
+  padding: 0 4px;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+.floating-input:focus + label,
+.floating-input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 8px;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.floating-select:focus + label,
+.floating-select:valid + label {
+  top: -8px;
+  left: 8px;
+  font-size: 0.75rem;
+  color: #333;
 }
