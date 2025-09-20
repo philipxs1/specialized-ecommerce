@@ -12,7 +12,7 @@ const CartItem = ({ title, image, price, id, quantity }: CartItemType) => {
 
   return (
     <li className="rounded-lg bg-white p-4">
-      <div className="flex gap-8">
+      <div className="flex flex-col gap-8 md:flex-row">
         <div className="w-[180px] max-w-[180px] basis-[180px]">
           <div className="bg-white-gray flex items-center justify-center rounded-lg">
             <img

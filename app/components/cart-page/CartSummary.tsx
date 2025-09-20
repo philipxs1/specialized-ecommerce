@@ -54,7 +54,7 @@ export default CartSummary;
 const SummaryItem = ({ item }: { item: CartItem }) => {
   const { title, image, price, colour, quantity } = item;
   return (
-    <div className="border-black-lighter flex gap-2 border-t pt-8 pb-2">
+    <div className="border-black-lighter flex-col gap-2 border-t pt-8 pb-2 md:flex-row">
       <div className="w-[180px] max-w-[180px] flex-1/4 basis-[180px]">
         <a
           className="bg-white-gray flex items-center justify-center rounded-lg"
