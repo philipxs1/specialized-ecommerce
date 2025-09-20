@@ -40,10 +40,10 @@ const ProductPage = ({
 
   return (
     <div className="product-grid max-w-[1920px]">
-      <div className="max-w-full [grid-area:gallery]">
+      <div className="gallery max-w-full overflow-hidden max-md:max-w-screen">
         <ImageGallery selectedVariant={selectedVariant} />
       </div>
-      <div className="w-full [grid-area:side-panel]">
+      <div className="side-panel w-full">
         <div className="sticky top-10 p-10">
           <div className="flex flex-col gap-5 border-b-2 border-gray-300 pb-8">
             <div>
@@ -69,7 +69,9 @@ const ProductPage = ({
                     : "bg-gray-100 hover:bg-gray-200"
                 }`}
               >
-                {variant.colour}
+                <span className="block max-w-[120px] truncate">
+                  {variant.colour}
+                </span>
               </button>
             ))}
           </div>
@@ -91,7 +93,7 @@ const ProductPage = ({
           </div>
         </div>
       </div>
-      <div className="border-t-2 border-b-2 border-gray-300 p-10 [grid-area:content]">
+      <div className="content border-t-2 border-b-2 border-gray-300 p-10">
         <div>
           <div className="pb-10">
             <h2 className="text-2xl font-bold">Product Details</h2>

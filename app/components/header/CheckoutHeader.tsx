@@ -7,7 +7,7 @@ const CheckoutHeader = () => {
     <div className="mx-auto w-full max-w-[1200px] p-6">
       {" "}
       <div className="flex justify-between">
-        <div className="flex items-center justify-center gap-10">
+        <div className="flex flex-col items-baseline justify-center gap-5 md:flex-row md:items-center md:gap-10">
           <a href="/">
             <LogoSmall color="black" />
           </a>

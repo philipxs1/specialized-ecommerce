@@ -81,13 +81,34 @@ body {
 .sidebar-scrollbar {
   scrollbar-width: none;
 }
-
 .product-grid {
   display: grid;
   grid-template-areas:
     "gallery side-panel"
     "content side-panel";
   grid-template-columns: var(--grid-columns-set);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-areas:
+      "gallery"
+      "side-panel"
+      "content";
+    grid-template-columns: 1fr; /* stack on mobile */
+  }
+}
+
+/* Named grid areas */
+.product-grid > .gallery {
+  grid-area: gallery;
+}
+.product-grid > .side-panel {
+  grid-area: side-panel;
+}
+.product-grid > .content {
+  grid-area: content;
 }
 
 .thumbs-swiper .thumb-active {

@@ -3,6 +3,7 @@ import Carousel from "../carousel/Carousel";
 import SideBar from "../sidebar/SideBar";
 
 import CollectionGrid from "../collection-page/CollectionGrid";
+import MobileSortBy from "../sidebar/MobileSortyBy";
 
 export type CollectionLayoutTypes = {
   title: string;
@@ -23,11 +24,18 @@ const CollectionLayout = ({
 }: CollectionLayoutTypes) => {
   return (
     <div>
-      <div className="mx-6 my-6 flex h-full gap-20">
-        <h1 className="text-2xl font-bold">
-          {title} &nbsp;
-          <span className="p-2 text-lg font-normal">({products?.length})</span>
-        </h1>
+      <div className="mx-6 my-6 flex h-full">
+        <div className="flex w-full flex-col justify-between gap-5 md:flex-row">
+          <h1 className="text-2xl font-bold">
+            {title} &nbsp;
+            <span className="p-2 text-lg font-normal">
+              ({products?.length})
+            </span>
+          </h1>
+          <div className="lg:hidden">
+            <MobileSortBy />
+          </div>
+        </div>
         <div className="flex gap-5">
           {/* {activeFilters?.map((filter) => <FilterButton filter={filter} />)} */}
         </div>

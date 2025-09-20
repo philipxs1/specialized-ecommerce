@@ -13,6 +13,7 @@ import ShippingAddressForm from "~/components/cart-page/ShippingForm";
 import ShippingSummary from "~/components/cart-page/ShippingSummary";
 import CartSummary from "~/components/cart-page/CartSummary";
 import PaymentForm from "~/components/cart-page/PaymentForm";
+import PaymentFormExpress from "~/components/cart-page/PaymentFormExpress";
 
 export interface CustomerInfo {
   firstName?: string;
@@ -133,7 +134,7 @@ const index = () => {
             stepNumber={3}
             currentStep={step}
           >
-            <PaymentForm totalAmount={totalPrice()} />
+            <PaymentFormExpress totalAmount={totalPrice()} />
           </StepWrapper>
         </div>
 

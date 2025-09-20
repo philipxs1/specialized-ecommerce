@@ -1,6 +1,6 @@
-import CartItem from "./CartItem";
 import { formatPrice } from "~/helpers/helpers";
 import { useCartStore } from "~/context/useCartStore";
+import CartItem from "./CartItem";
 
 type Props = {
   setStep: (step: number) => void;
@@ -15,7 +15,7 @@ const EditCart = ({ setStep }: Props) => {
 
   return (
     <div className="relative">
-      <div className="grid grid-cols-[var(--grid-columns-set)] gap-10 p-10">
+      <div className="grid grid-cols-[var(--grid-columns-set)] gap-10 p-10 max-lg:grid-cols-1">
         <div className="">
           <div className="flex items-baseline gap-2">
             <h2 className="text-xl font-bold">Cart</h2>

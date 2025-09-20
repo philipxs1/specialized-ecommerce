@@ -58,7 +58,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body className="h-full min-h-dvh">
         <QueryClientProvider client={queryClient}>
           {children}
-          <ReactQueryDevtools />
+          {/* <ReactQueryDevtools /> */}
         </QueryClientProvider>
         <ScrollRestoration />
         <Scripts />

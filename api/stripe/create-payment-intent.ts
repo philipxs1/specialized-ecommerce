@@ -17,7 +17,7 @@ export default async function handler(req: any, res: any) {
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
-      currency: "usd",
+      currency: "AUD",
       automatic_payment_methods: { enabled: true },
     });
 
