@@ -100,7 +100,5 @@ export default function useCollection(handle: string) {
   return useQuery({
     queryKey: ["collection", handle, sortBy],
     queryFn: () => fetchCollection(handle, sortBy),
-    staleTime: 1000 * 60 * 5,
-    placeholderData: (previousData) => previousData,
   });
 }

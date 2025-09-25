@@ -1,3 +1,5 @@
+import UnderConstruction from "~/components/errors/UnderConstruction";
+
 export default function SalesRoute() {
-  return <div>Sales</div>;
+  return <UnderConstruction />;
 }

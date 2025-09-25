@@ -22,6 +22,8 @@ const CollectionLayout = ({
   isLoading,
   isError,
 }: CollectionLayoutTypes) => {
+  const hasProducts = !!products?.length;
+
   return (
     <div>
       <div className="mx-6 my-6 flex h-full">
@@ -29,7 +31,7 @@ const CollectionLayout = ({
           <h1 className="text-2xl font-bold">
             {title} &nbsp;
             <span className="p-2 text-lg font-normal">
-              ({products?.length})
+              {hasProducts ? `(${products.length})` : ""}
             </span>
           </h1>
           <div className="lg:hidden">

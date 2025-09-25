@@ -1,3 +1,5 @@
+import UnderConstruction from "~/components/errors/UnderConstruction";
+
 export default function AccessoriesRoute() {
-  return <div>Bike Accessories</div>;
+  return <UnderConstruction />;
 }
